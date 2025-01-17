@@ -1,0 +1,15 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Encrypt all layout resource files.
+-encryptresourcefiles res/layout/**
+
+# Encrypt a resource String which is used in the HelloWorldActivity.
+# Strings which are referenced from other XML's can't be encrypted.
+-encryptresources string/message
+
+# If possible, add class encryption, as another layer of protection.
+# In this case, it's an activity class, which currently can't be encrypted.
+#-encryptclasses com.example.HelloWorldActivity

@@ -1,0 +1,15 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# Encrypt the native libraries (including libjnidispatch.so used by JNA).
+# By including the native loader library DexGuard will use the
+# native loader to load these encrypted native libraries.
+-encryptnativelibraries lib/**/*.so
+
+# The aggressive name obfuscation that is applied to encrypted native libraries
+# causes the SoFileLoader mechanism to crash. In order to prevent that, we will
+# keep the names of the encrypted native libraries while still encrypting them.
+-keepresourcefiles lib/**/libsecret.so
+
+# We can also encrypt the JNA stub class.
+-encryptclasses com.example.jni.NativeSecret

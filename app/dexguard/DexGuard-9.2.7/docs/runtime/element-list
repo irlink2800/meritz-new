@@ -1,0 +1,4 @@
+com.guardsquare.dexguard.runtime.detection
+com.guardsquare.dexguard.runtime.encryption
+com.guardsquare.dexguard.runtime.net
+com.guardsquare.dexguard.runtime.report

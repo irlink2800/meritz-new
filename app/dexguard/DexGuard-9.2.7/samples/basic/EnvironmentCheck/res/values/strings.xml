@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EnvironmentCheck Sample</string>
+
+    <string name="env_check_1">App debuggable</string>
+    <string name="env_check_2">Debugger blocked</string>
+    <string name="env_check_3">Debugger connected</string>
+    <string name="env_check_4">Signed with debug keys</string>
+    <string name="env_check_5">Running in emulator</string>
+    <string name="env_check_6">Device rooted</string>
+    <string name="env_check_7">App hooked</string>
+    <string name="env_check_8">App hooked - FAST</string>
+    <string name="env_check_9">Running in virtual environment</string>
+    <string name="env_check_10">Certificate check</string>
+</resources>

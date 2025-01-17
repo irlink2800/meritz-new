@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_null">0dp</dimen>
+    <dimen name="margin_left">15dp</dimen>
+    <dimen name="admin">11sp</dimen>
+    <dimen name="notadmin">16sp</dimen>
+</resources>

@@ -1,0 +1,52 @@
+This sample illustrates key rotation, supported as of Android Pie (9.0).
+
+The certificate lineage file specifies our subsequent certificates.
+
+    -certificatelineage debug.lineage
+
+It's optional in this case, since we only have two certificates, and we're
+specifying both of them. DexGuard can then create the certificate lineage
+for us.
+
+The signing keys are always required, since the certificate lineage file
+contains certificates but not the corresponding private keys.
+
+The oldest signing key is already specified in build.gradle,
+- for Jar Signature Scheme v1 (old versions of Android),
+- for Apk Signature Scheme v2 (Android 7.0+),
+- for the certificate lineage in Apk Signature Scheme v3 (Android 9.0+),
+  endorsing the newer signing key.
+
+    -keystore         debug1.keystore
+    -keystorepassword android
+    -keyalias         AndroidDebugKey
+    -keypassword      android
+
+We specify the replacement signing key in dexguard-project.txt,
+- for Apk Signature Scheme v3 (Android 9.0+).
+
+    -keystore         debug2.keystore
+    -keystorepassword android
+    -keyalias         AndroidDebugKey
+    -keypassword      android
+
+Remember that versions of Android before P don't know of certificate lineage,
+so subsequent versions of the app need to be signed with the old key in the
+old signature schemes. DexGuard adds the necessary signature schemes with the
+correct keys.
+
+You can inspect the certificates in the key stores with keytool:
+
+     keytool -list -v -keystore debug1.keystore -storepass android
+     keytool -list -v -keystore debug2.keystore -storepass android
+
+You can create the lineage file with a sufficiently recent version of apksigner:
+
+    apksigner rotate \
+      --out debug.lineage \
+      --old-signer --ks debug1.keystore --ks-pass pass:android --ks-key-alias AndroidDebugKey --key-pass pass:android \
+      --new-signer --ks debug2.keystore --ks-pass pass:android --ks-key-alias AndroidDebugKey --key-pass pass:android
+
+You can verify the signatures of the apps with apksigner:
+
+    apksigner verify --print-certs -v build/outputs/apk/debug/CertificateLineage-debug.apk

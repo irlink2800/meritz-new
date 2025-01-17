@@ -1,0 +1,8 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<actions>
+    <action intentName="actions.intent.GET_THING">
+        <fulfillment urlTemplate="https://example.com/search{?query}" >
+            <parameter-mapping intentParameter="thing.name" urlParameter="query"/>
+        </fulfillment>
+    </action>
+</actions>

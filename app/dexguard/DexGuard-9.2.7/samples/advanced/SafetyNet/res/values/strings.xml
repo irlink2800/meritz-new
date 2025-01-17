@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SafetyNet Sample</string>
+    <string name="status_button">Status</string>
+    <string name="performing_call">Performing API call ..</string>
+    <string name="invalid_jws">Invalid JWS received</string>
+    <string name="wrong_nonce">Wrong nonce returned</string>
+</resources>

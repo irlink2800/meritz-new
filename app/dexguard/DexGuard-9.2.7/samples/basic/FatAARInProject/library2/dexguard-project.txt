@@ -1,0 +1,7 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# Explicitly specify the public API of our library.
+-keep,asapi public class com.example.library2.Library2 {
+    public protected *;
+}

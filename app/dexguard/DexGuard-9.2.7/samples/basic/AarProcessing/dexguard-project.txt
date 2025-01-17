@@ -1,0 +1,9 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# Encrypt the secret constant, by specifying the string itself.
+-encryptstrings "Hello, world!"
+
+# If necessary, we can use wildcards here as well.
+#-encryptstrings "Hello, *!"
+

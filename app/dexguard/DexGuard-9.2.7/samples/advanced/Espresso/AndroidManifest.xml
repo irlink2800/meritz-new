@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+~ Copyright (C) 2015 The Android Open Source Project
+~
+~ Licensed under the Apache License, Version 2.0 (the "License");
+~ you may not use this file except in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~   http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.android.testing.espresso">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".basic.BasicActivity"
+            android:label="@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".basic.ShowTextActivity" />
+        <activity android:name=".custom_matcher.CustomMatcherActivity" />
+        <activity
+            android:name=".data_adapter.DataAdapterActivity"
+            android:label="@string/title_activity_long_list" />
+        <activity
+            android:name=".idling_resource.IdlingResourceActivity"
+            android:label="@string/title_activity_idling_resource" />
+        <activity
+            android:name=".intents_advanced.ImageViewerActivity"
+            android:label="@string/title_activity_image_viewer" />
+        <activity
+            android:name=".intents_basic.ContactsActivity"
+            android:label="@string/title_activity_contacts" />
+        <activity
+            android:name=".intents_basic.DialerActivity"
+            android:label="@string/title_activity_dialer" />
+        <activity
+            android:name=".multiprocess.PrivateProcessActivity"
+            android:label="@string/title_activity_private_process" />
+        <activity
+            android:name=".multiprocess.DefaultProcessActivity"
+            android:label="@string/title_activity_default_process" />
+        <activity
+            android:name=".multiwindow.SuggestActivity"
+            android:label="@string/title_activity_suggest" />
+        <activity
+            android:name=".recycler_view.RecyclerViewActivity"
+            android:label="@string/title_activity_recycler_view" />
+        <activity
+            android:name=".web_basic.WebViewActivity"
+            android:label="@string/title_activity_web_view" />
+        <activity
+            android:name=".custom_viewaction.CustomViewActionActivity"
+            android:label="@string/title_activity_custom_view_action" />
+    </application>
+
+</manifest>

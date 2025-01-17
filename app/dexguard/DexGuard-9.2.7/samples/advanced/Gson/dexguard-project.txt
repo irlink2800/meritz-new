@@ -1,0 +1,35 @@
+# DexGuard's default settings are fine for this sample application,
+# because all the serialized classes and fields are detected by the
+# GSON optimization and optimizations in general are enabled by default,
+# at least for release builds.
+#
+# To measure the performance difference compared to when the GSON
+# optimization is disabled, the following optimization filter can be used:
+#
+#-optimizations !library/gson
+#
+#
+# When disabling the GSON optimization, we need to explicitly preserve the
+# serialized fields, with their original names:
+#
+#-keepclassmembers class com.example.Company,
+#                        com.example.Employee,
+#                        com.example.SoftwareDeveloper,
+#                        com.example.Person,
+#                        com.example.Name,
+#                        com.example.Sex,
+#                        com.example.Address,
+#                        com.example.Addresssee {
+#    <fields>;
+#}
+#
+#
+# An alternative way to preserve the serialized fields when GSON optimization
+# is disabled, is by including dexguard-gson.pro, which has rules for
+# preserving annotated fields. This will work for this sample application since
+# all fields are nicely annotated.
+#
+#-include /lib/dexguard-gson.pro
+
+# We'll just display some more statistics about the processed code.
+-verbose

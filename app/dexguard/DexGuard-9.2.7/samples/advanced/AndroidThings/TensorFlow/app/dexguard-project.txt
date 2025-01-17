@@ -1,0 +1,9 @@
+# The default DexGuard configuration already contains the required options to
+# make the TensorFlow sample work properly. The following options are optional
+# suggestions to harden the sample further.
+
+# We'll display some more statistics about the processed code.
+-verbose
+
+# Encrypt the TensorFlow models.
+-encryptassetfiles assets/*.tflite

@@ -1,0 +1,86 @@
+This sample shows how to use DexGuard to protect a React Native application that uses code push.
+
+Creating a code push app
+========================
+
+In this section you will create a code push app in the App Center (https://appcenter.ms/)
+via the appcenter-cli. If you have already done so, you can skip this section.
+
+First, install the appcenter-cli command.
+
+$ npm install -g appcenter-cli
+
+Next, log in to the appcenter for this cli session. This will open a browser window
+displaying a code that must be copied to the terminal.
+
+$ appcenter login
+
+The following command creates a React-Native Android app on the App Center.
+Replace <appName> with the name of the app you want to create.
+The identifier that you see after 'Owner Name' in the output of this command
+will be referred to as <ownerName> later on.
+
+$ appcenter apps create -d <AppName> -o Android -p React-Native
+
+Next, add a deployment to the Code Push app. Replace <deploymentName> with
+the name of the deployment you want to create. The deployment key that you
+see in the output of this command will be needed later.
+
+$ appcenter codepush deployment add -a <ownerName>/<appName> <deploymentName>
+
+Building the Code Push app
+==========================
+
+First, install the dependencies from the package.json folder.
+In the ReactNative folder run the following command:
+
+$ npm install
+
+Before building the app, the deployment key defined in
+ReactNative/android/app/src/main/res/values/strings.xml must be set.
+Replace Deployment_Key in this file with the deployment key.
+
+Next, build the Android app.
+In the ReactNative/android folder run the following command:
+
+$ ./gradlew clean assembleRelease
+
+The generated apk can be installed on an emulator or phone.
+
+Releasing and Protecting a code push update
+===========================================
+
+In this section we create a code push update and protect
+the generated update using DexGuard.
+
+First, install the react-native command.
+
+$ npm install -g react-native-cli
+
+Then, make a change in the App.js file so the pushed changes can be observed.
+
+Generate the bundle using the command below in the ReactNative
+directory. Make sure the CodePush folder exists before
+running this command.
+
+$ react-native bundle --platform android --dev false --entry-file index.js \
+    --bundle-output CodePush/index.android.bundle --assets-dest CodePush
+
+Protect this update by using DexGuard with the dexguard-project-codepush.txt
+configuration file.
+
+$ ../../../../bin/dexguard.sh -include dexguard-project-codepush.txt
+
+Alternatively, use the code push gradle task in the ReactNative/android folder:
+
+$ ./gradlew processCodePushUpdateWithDexGuard
+
+Release the protected update to the App Center using the following command.
+The <release> is the release version number you want to push, 1.0.0 for example.
+The <deploymentName> is the name of the deployment you created earlier.
+
+$ appcenter codepush release -a <ownerName>/<appName> -c CodePush-protected/ \
+    -t <release> -d <deploymentName> -m
+
+The installed apk will download and apply the changes that were just pushed.
+After this, the changes made in App.js earlier should now be observable.

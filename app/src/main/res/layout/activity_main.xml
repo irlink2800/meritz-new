@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.irlink.meritz.ui.screen.main.MainViewModel" />
+
+        <!--        <variable-->
+        <!--            name="deviceInfo"-->
+        <!--            type="com.irlink.meritz.util.DeviceInfo" />-->
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@drawable/head_bottomline"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/meritzLogo"
+                android:layout_width="56.7dp"
+                android:layout_height="16.3dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/meritz_direct_bi_sub_2" />
+
+            <LinearLayout
+                android:id="@+id/infoLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/incall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:gravity="center_vertical"
+                    android:text=''
+                    android:textColor='@color/battleship_grey'
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/socketState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@drawable/logout_bt"
+                android:text="@string/logout" />
+
+            <TextView
+                android:id="@+id/userName_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="11dp"
+                android:layout_weight="0"
+                android:textColor="@color/battleship_grey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="1dp"
+                android:layout_height="14dp"
+                android:layout_weight="0"
+                android:background="@color/charcoal_grey" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="41dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:paddingLeft="11dp"
+                android:paddingTop="11.3dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="11.3dp"
+                android:src="@drawable/search_icon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@drawable/tab_bottomline"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.selectedTapId == 1 ? @drawable/tab_active_bottomline : null}"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setSelectedTapId(1)}"
+                android:text="@string/assigned_customer"
+                android:textColor="@{viewModel.selectedTapId == 1 ? @color/teal_blue : @color/battleship_grey}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="1.3dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@color/pale_grey" />
+
+            <TextView
+                android:id="@+id/tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.selectedTapId == 2 ? @drawable/tab_active_bottomline : null}"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setSelectedTapId(2)}"
+                android:text="@string/reservation_customer"
+                android:textColor="@{viewModel.selectedTapId == 2 ? @color/teal_blue : @color/battleship_grey}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="1.3dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@color/pale_grey" />
+
+            <TextView
+                android:id="@+id/tab3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.selectedTapId == 3 ? @drawable/tab_active_bottomline : null}"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setSelectedTapId(3)}"
+                android:text="@string/call_history"
+                android:textColor="@{viewModel.selectedTapId == 3 ? @color/teal_blue : @color/battleship_grey}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="1.3dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:background="@color/pale_grey" />
+
+            <TextView
+                android:id="@+id/tab4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@{viewModel.selectedTapId == 4 ? @drawable/tab_active_bottomline : null}"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setSelectedTapId(4)}"
+                android:text="@string/message_history"
+                android:textColor="@{viewModel.selectedTapId == 4 ? @color/teal_blue : @color/battleship_grey}"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dateSearch_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:visibility="@{viewModel.selectedTapId == 3 || viewModel.selectedTapId == 4 ? View.GONE : View.VISIBLE}">
+
+            <TextView
+                android:id="@+id/searchType_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@{viewModel.selectedTapId == 1 ? @string/calandar_title1 : @string/calandar_title2}"
+                android:textColor="@color/charcoal_grey"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/searchDate_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_weight="0"
+                android:text="@={viewModel.searchDate}"
+                android:textColor="@color/charcoal_grey"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0"
+                android:src="@drawable/pop_cal_bul" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dateSearchGradient_View"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_weight="0"
+            android:background="@drawable/gray_gradient"
+            android:visibility="@{viewModel.selectedTapId == 3 || viewModel.selectedTapId == 4 ? View.GONE : View.VISIBLE}"></View>
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tab_bottomline"
+            android:visibility="visible" />
+
+        <com.irlink.meritz.ui.base.view.BaseRecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:visibility="gone" />
+
+        <com.irlink.meritz.ui.base.view.BaseRecyclerView
+            android:id="@+id/list2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="0"
+            android:background="@color/teal_blue"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.isNoData() == true ? View.GONE : View.VISIBLE, default=gone}">
+
+            <TextView
+                android:id="@+id/nextBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:gravity="center_vertical"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/noDataTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:textColor="@color/battleship_grey"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</layout>

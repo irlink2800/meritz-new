@@ -1,0 +1,35 @@
+-verbose
+
+# If you encounter problems in your project, you can let DexGuard instrument
+# your code, so the app prints out configuration suggestions at run-time, in
+# the logcat:
+#
+# -addconfigurationdebugging
+
+# Obfuscate all JavaScript files.
+# (If you want to observe the effects of the JavaScript obfuscation,
+# temporarily disable asset encryption for these files, otherwise you will
+# only see the encrypted contents.)
+-obfuscatejavascript assets/**.js, assets/**.html, assets/**.htm
+
+# Specify the JavaScript-specific configuration file
+# (Required when using -obfuscatejavascript)
+-javascriptconfiguration javascript.yml
+
+# Encrypt all asset files that are referenced from the code.
+-encryptassetfiles assets/**
+
+# Asset files which are not referenced from code will be removed
+# (default behavior since DexGuard 7.1). We have to explicitly keep
+# all assets to prevent this for a Cordova/Ionic app.
+-keepresourcefiles assets/**
+
+# Remove Cordova logging code.
+-assumenosideeffects class org.apache.cordova.LOG {
+    public static boolean isLoggable(int);
+    public static void v(...);
+    public static void d(...);
+    public static void i(...);
+    public static void w(...);
+    public static void e(...);
+}

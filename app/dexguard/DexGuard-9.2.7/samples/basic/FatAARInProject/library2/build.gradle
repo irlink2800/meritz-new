@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'dexguard'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+dependencies {
+    embed project(':library')
+}
+
+dexguard {
+    path = '../../../..'
+    // We can build the sample with the sample license file
+    license = '../../../../lib/dexguard-license.txt'
+    configurations {
+        debug {
+            defaultConfiguration 'dexguard-library-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        release {
+            defaultConfiguration 'dexguard-library-release-aggressive.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}

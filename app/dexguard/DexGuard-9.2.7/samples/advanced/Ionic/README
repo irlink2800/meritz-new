@@ -1,0 +1,18 @@
+This sample is the directory you obtain after running
+
+    ionic cordova build android --prod --release
+
+and navigating to the platforms/android directory. This android directory is 
+here renamed to Ionic.
+
+Important: To use asset encryption on ionic apps, you need either:
+  - the cordova-plugin-ionic-webview plugin enabled 
+    (standard when creating an Ionic project)
+    or
+  - setup your MainActivity such as in our Cordova sample 
+    (see samples/advanced/Cordova/README)
+
+
+
+
+

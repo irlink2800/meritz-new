@@ -1,0 +1,11 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Encrypt the 'message' metadata in the Android Manifest.
+-encryptmetadata message
+
+# If possible, add class encryption, as another layer of protection.
+# In this case, it's an activity class, which currently can't be encrypted.
+#-encryptclasses com.example.HelloWorldActivity

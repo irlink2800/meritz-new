@@ -1,0 +1,137 @@
+#-dontshrink
+#-dontoptimize
+#-dontobfuscate
+
+#-keep class * { *; }
+#-keepattributes *
+#-keepresources */*
+#-keepresourcefiles res/**
+#-keepresourcefiles assets/**
+#-keepresourcefiles lib/**
+#-keepresourcexmlattributenames **
+
+-keep class android.support.v7.** { *; }
+-dontwarn android.support.v7.**
+
+-keep class org.conscrypt.** { *; }
+-dontwarn org.conscrypt.**
+
+-keep class io.fabric.sdk.** { *; }
+-dontwarn io.fabric.sdk.**
+
+-keep class javax.annotation.** { *; }
+-dontwarn javax.annotation.**
+
+-keep class android.databinding.** { *; }
+-keep interface android.databinding.** { *; }
+-dontwarn android.databinding.**
+
+-keep class android.net.** { *; }
+-dontwarn android.net.**
+
+-keep class com.amitshekhar.** { *; }
+-keep class com.klinker.android.** { *; }
+-keep class android.support.v4.** { *; }
+-keep class com.irlink.meritz.call.** { *; }
+-keep class com.irlink.meritz.SmsReceiver { *; }
+-keep class com.irlink.meritz.MmsReceiver { *; }
+#-keep class com.irlink.meritz.util.** { *; }
+-keep class com.irlink.meritz.ListActivity { *; }
+#-keep class com.irlink.meritz.databinding.** { *; }
+-keep class com.irlink.meritz.listview.** { *; }
+#-keep class java.util.** { *; }
+-keep class com.minimize.android.rxrecycleradapter.** { *; }
+-keep class io.reactivex.rxjava2.** { *; }
+-keep class com.jakewharton.rxbinding2.** { *; }
+-keep class com.trello.rxlifecycle2.** { *; }
+-keep class com.benoitquenaudon.** { *; }
+-keep class com.android.support.** { *; }
+-keep class com.benoitquenaudon.rxdatabinding.** { *; }
+
+## LIBRARY: Retrofit
+-keep class org.apache.http.** { *; }
+-keep class org.apache.james.mime4j.** { *; }
+-keep class javax.inject.** { *; }
+-keep class retrofit.** { *; }
+-keepclasseswithmembers class * {
+    @retrofit.http.* <methods>;
+}
+-dontwarn rx.**
+-dontwarn retrofit.**
+-dontwarn com.google.appengine.**
+
+## LIBRARY: GSON
+-keep class com.google.gson.** { *; }
+-keep class com.google.inject.** { *; }
+-dontwarn com.google.gson.**
+
+# Gson uses generic type information stored in a class file when working with
+# fields. Proguard removes such information by default, so configure it to keep
+# all of it. Facebook SDK Also requires this.
+-keepattributes Signature
+
+-keepclassmembers enum * {
+     public static **[] values();
+     public static ** valueOf(java.lang.String);
+}
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+## LIBRARY: OkHttp
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.**
+-dontwarn okio.**
+
+## Crashlytics
+-keep class com.crashlytics.** { *; }
+
+## SQLCipher
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
+
+-keep class net.sqlcipher.** { *; }
+
+-keep class net.sqlcipher.database.** { *; }
+-dontwarn net.sqlcipher.**
+-keepattributes EnclosingMethod
+
+#-keep class com.irlink.meritz.** { *; }
+#-dontwarn com.irlink.meritz.**
+
+-dontwarn me.eugeniomarletti.kotlin.**
+-dontwarn kotlin.internal.**
+-dontwarn android.arch.persistence.**
+
+-keep class com.android.internal.telephony.** { *; }
+-dontwarn com.android.internal.telephony.**
+
+-keep class com.irlink.irrecorder.** { *; }
+-dontwarn com.irlink.irrecorder.**
+
+#-keep class com.arthenica.mobileffmpeg.Config {
+#   native <methods>;
+#   void log(int, byte[]);
+#   void statistics(int, float, float, long , int, double, double);
+#}
+-keep class com.arthenica.mobileffmpeg.** { *; }
+-dontwarn com.arthenica.mobileffmpeg.**
+
+#-keep class com.arthenica.mobileffmpeg.AbiDetect {
+#   native <methods>;
+#}
+
+#Firebase
+-keep class com.google.firebase.** { *; }
+-keep class org.apache.** { *; }
+-keep class com.fasterxml.jackson.** { *; }
+-keep class javax.servlet.** { *; }
+-keep class org.ietf.jgss.** { *; }
+-dontwarn org.apache.**
+-dontwarn org.w3c.dom.**
+-dontwarn org.joda.time.**
+-dontwarn org.shaded.apache.**
+-dontwarn org.ietf.jgss.**
+
+#GooglePlayServices
+-keep class com.google.android.gms.** {*;}

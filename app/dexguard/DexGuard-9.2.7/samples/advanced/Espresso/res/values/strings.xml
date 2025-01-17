@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2015 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <string name="app_name">Merged Espresso sample</string>
+    <string name="hello_world">Hello Espresso!</string>
+    <string name="change_text">Change text</string>
+    <string name="type_something">type something…</string>
+    <string name="open_activity_and_change_text">Open activity and change text</string>
+    <string name="instructions">See MainActivity.java for valid options or type something ending
+        in \"coffee\".
+    </string>
+    <string name="hint">How do you like your coffee?</string>
+    <string name="validate">Validate</string>
+    <string name="good_choice">Good choice!</string>
+    <string name="bad_choice">Bad choice!</string>
+    <string name="title_activity_long_list">LongListActivity</string>
+    <string name="row_label">Clicked on row</string>
+    <string name="title_activity_idling_resource">IdlingResourceActivity</string>
+    <string name="waiting_msg">Waiting for message…</string>
+    <string name="title_activity_image_viewer">ImageViewerActivity</string>
+    <string name="button_open_camera">Take photo</string>
+    <string name="title_activity_contacts">ContactsActivity</string>
+    <string name="type_a_phone_number">Please enter a number…</string>
+    <string name="button_dial_number">Call Number</string>
+    <string name="button_pick_contact">Pick Number</string>
+    <string name="contacts_activity_placeholder">This a placeholder Activity for a contacts screen.
+        This activity is never opened and does not contain any real contact data for
+        keeping this sample simple and focused.
+    </string>
+    <string name="warning_call_phone_permission">This app requires \'call phone\' permission to run</string>
+    <string name="title_activity_dialer">DialerActivity</string>
+    <string name="title_activity_private_process">PrivateProcessActivity</string>
+    <string name="title_activity_default_process">DefaultProcessActivity</string>
+    <string name="list_selection">Selected: %1$s</string>
+    <string name="start_private_activity">Start Private Process Activity</string>
+    <string name="click_me">Click Me!</string>
+    <string name="button_clicked">Button clicked!</string>
+    <string-array name="list_items">
+        <item>Espresso</item>
+        <item>Doppio</item>
+        <item>Macchiato</item>
+        <item>Cappuccino</item>
+        <item>Americano</item>
+        <item>Mocha</item>
+        <item>Latte</item>
+    </string-array>
+    <string name="title_activity_suggest">SuggestActivity</string>
+    <string name="pick_water">Pick body of water</string>
+    <string-array name="bodies_of_water">
+        <item>Pacific Ocean</item>
+        <item>Atlantic Ocean</item>
+        <item>Indian Ocean</item>
+        <item>Southern Ocean</item>
+        <item>Arctic Ocean</item>
+        <item>Mediterranean Sea</item>
+        <item>Caribbean Sea</item>
+        <item>South China Sea</item>
+        <item>Bering Sea</item>
+        <item>Gulf of Mexico</item>
+        <item>Okhotsk Sea</item>
+        <item>East China Sea</item>
+        <item>Hudson Bay</item>
+        <item>Japan Sea</item>
+        <item>Andaman Sea</item>
+        <item>North Sea</item>
+        <item>Red Sea</item>
+        <item>Baltic Sea</item>
+    </string-array>
+    <string name="title_activity_recycler_view">RecyclerViewActivity</string>
+    <string name="element_text">Element</string>
+    <string name="item_element_text">This is element #</string>
+    <string name="middle">This is the middle!</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_custom_view_action">CustomViewActionActivity</string>
+</resources>

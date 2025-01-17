@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="red">#ff0000</color>
+    <color name="whitegray">#eeeff3</color>
+    <color name="gray">#babcc6</color>
+    <color name="darkgray">#40010202</color>
+    <color name="libstick">#e21a22</color>
+    <color name="teal_blue">#0096af</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="battleship_grey">#636b7d</color>
+    <color name="silver">#d7d8da</color>
+    <color name="charcoal_grey">#35373d</color>
+    <color name="pale_grey">#e9ebef</color>
+    <color name="steel">#7a808c</color>
+    <color name="charcoal_grey_two">#434853</color>
+    <color name="ice_blue">#f6feff</color>
+
+    <color name="gray_light">#e8e8e8</color>
+
+    <color name="colorTransparent">#00000000</color>
+    <color name="dialogBackground">#80000000</color>
+
+</resources>

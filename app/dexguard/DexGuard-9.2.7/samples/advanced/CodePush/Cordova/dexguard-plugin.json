@@ -1,0 +1,11 @@
+{
+    "appLevelFiles"               : [ "build-extras.gradle",
+                                      "dexguard-project-app.txt",
+                                      "dexguard-project-javascript.txt",				      
+                                      "javascript.yml" ],
+    "dexguardPath"                : "/path/to/dexguard",
+    "appDirectory"                : "app", 
+    "srcDirectory"                : "src/main/java",
+    "customActivityFile"          : "EncryptedCordovaActivity.java",
+    "mainActivity"                : "com.example.MainActivity"
+}

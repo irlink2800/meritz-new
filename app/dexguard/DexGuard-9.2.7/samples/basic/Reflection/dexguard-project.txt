@@ -1,0 +1,12 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Access sensitive runtime APIs through reflection. In this case, it is an
+# android API call. In practice it will typically be encryption APIs and
+# application tampering checks.
+# We'll also encrypt the resulting strings, adding another layer of obfuscation.
+-accessthroughreflection,encryptstrings class android.app.Activity {
+  public void setContentView(android.view.View);
+}

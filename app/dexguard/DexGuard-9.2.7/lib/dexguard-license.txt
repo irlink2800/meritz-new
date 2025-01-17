@@ -1,0 +1,12 @@
+# Guardsquare license file
+expiryDate            = 2026-10-29
+maintenanceExpiryDate = 2026-10-29
+product               = DexGuard
+version               = 7.*,8.*,9.*
+identifier            = com.irlink.meritz
+licensee              = nGenSoft
+customerID            = AC00000554
+contact               = Unknown Park
+contactEmail          = gs@ngensoft.co.kr
+licenseFileVersion    = 1
+licenseKey            = 3a8e1b8066e3507451a695373dd956dd7a8c125f10c2f2d64d2f93d0b0e9500016ac2c53cbd998c9fc0450e48b8840836ffc911bc738536a36ee59ad3b3ed16b

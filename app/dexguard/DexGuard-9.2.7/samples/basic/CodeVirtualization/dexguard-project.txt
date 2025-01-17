@@ -1,0 +1,11 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Virtualize the code in our secret class and the Activity class.
+-virtualizecode class com.example.SecretClass
+-virtualizecode class com.example.HelloWorldActivity
+
+# We'll also encrypt the message strings, providing another layer of obfuscation.
+-encryptstrings "Hello, *!"

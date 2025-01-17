@@ -1,0 +1,3 @@
+-dontoptimize
+-dontshrink
+-dontobfuscate

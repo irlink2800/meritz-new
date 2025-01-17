@@ -1,0 +1,10 @@
+Building the sample:
+
+1) In plugins/ directory
+
+  > ./gradlew assemble
+
+2) In app/ directory
+
+  > ./gradlew assembleRelease
+

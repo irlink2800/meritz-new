@@ -1,0 +1,1 @@
+This sample contains assets for texture compression format PVRTC.

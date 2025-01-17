@@ -1,0 +1,14 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# We use reflection with the Person data class, therefore we must keep the class and the fields that
+# we access through reflection.
+-keep class com.example.Person {
+    # Keep the Kotlin property getters, this will also keep related backing fields when using -keepkotlinmetadata
+    java.lang.String getFirstname();
+    java.lang.String getSurname();
+}
+
+# When using reflection in Kotlin, you must also keep and adapt the Kotlin metadata.
+# Add this config option to do so.
+-keepkotlinmetadata

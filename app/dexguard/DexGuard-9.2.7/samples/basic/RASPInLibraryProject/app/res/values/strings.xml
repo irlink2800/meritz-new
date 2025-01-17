@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RASP Sample</string>
+    <string name="message">You have been logged out</string>
+    <string name="tutorial">
+        <![CDATA[
+        <b>DexGuard RASP checks have been injected into this sample.</b>
+        <br/>
+        <p>You can enable or disable certain checks in the <b>dexguard-project.txt</b> configuration file.</p>
+        <br/>
+        <p>You can enable or disable "continue-on-callback" behaviour for certain checks in the <b>dexguard-project.txt</b> configuration file.</p>
+        <br/>
+        <p>You can also add your own custom callback, as demonstrated in the configuration file.</p>
+        <br />
+        <p>If you want to enable ThreatCast integration please refer to the DexGuard documentation.</p>
+        ]]>
+    </string>
+</resources>

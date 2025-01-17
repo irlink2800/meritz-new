@@ -1,0 +1,26 @@
+// This file provides basic support for building the TensorFlow demo
+// in Android Studio with Gradle.
+
+buildscript {
+    repositories {
+        maven {
+            url '../../../../lib'       // For the DexGuard plugin.
+        }
+        google()                        // For the Android plugin.
+	mavenCentral()
+        jcenter()                       // For anything else.
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+        //noinspection GradleDynamicVersion
+        classpath 'com.guardsquare:dexguard-gradle-plugin:+'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+	jcenter()
+    }
+}

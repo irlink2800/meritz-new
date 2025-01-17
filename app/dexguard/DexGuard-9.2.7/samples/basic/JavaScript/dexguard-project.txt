@@ -1,0 +1,15 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Specify the configuration file for the JavaScript obfuscator.
+# (Only necessary when using the -obfuscatejavascript option below)
+-javascriptconfiguration javascript.yml
+
+# Obfuscate the JavaScript file(s).
+-obfuscatejavascript assets/**.js
+
+# Keep the JavaScript file(s) to be able to see the obfuscated result:
+# (Otherwise, your decompiler might not be able to open the file)
+# -keepresourcefiles assets/**.js

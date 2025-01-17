@@ -1,0 +1,5 @@
+To build this project, first build the library and then the app:
+
+    ./gradlew :library:assemble
+    ./gradlew :app:assemble
+

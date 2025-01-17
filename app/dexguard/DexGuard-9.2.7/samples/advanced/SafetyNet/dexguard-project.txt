@@ -1,0 +1,29 @@
+# We'll display some more statistics about the processed code.
+-verbose
+
+# Encrypt the strings in the main activity and the internal Delegate class
+-encryptstrings class com.example.SafetyNetDemoActivity
+-encryptstrings class com.example.SafetyNetDemoActivity$Delegate
+
+# Encrypt the class peforming the SafetyNet check
+-encryptclasses com.example.SafetyNetDemoActivity$Delegate
+
+# Hide the API call to the SecureRandom class
+-accessthroughreflection class java.security.SecureRandom {
+    <init>();
+    void nextBytes(byte[]);
+}
+
+# Hide the API calls to the HttPost class
+-accessthroughreflection class org.apache.http.client.methods.HttpPost {
+    <init>(java.lang.String);
+    void setHeader(java.lang.String, java.lang.String);
+    void setEntity(org.apache.http.HttpEntity);
+}
+
+# Hide the API calls to the Base64 class
+-accessthroughreflection class android.util.Base64 {
+   byte[] decode(java.lang.String, int);
+   byte[] decode(byte[], int);
+   byte[] encode(byte[], int);
+}

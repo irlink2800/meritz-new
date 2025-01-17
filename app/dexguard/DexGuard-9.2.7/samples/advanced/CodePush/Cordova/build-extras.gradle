@@ -1,0 +1,24 @@
+apply plugin: 'dexguard'
+
+// Only necessary for EncryptedSystemWebViewClient 
+dependencies {
+    implementation(name:'dexguard-runtime', ext:'aar')
+}
+
+dexguard {
+    path = '/path/to/dexguard'
+    configurations {
+        release {
+            defaultConfiguration 'dexguard-release-aggressive.pro'
+            configuration 'dexguard-project-app.txt'
+            configuration 'dexguard-project-javascript.txt'	    
+        }
+        debug {
+            defaultConfiguration 'dexguard-debug.pro'
+        }
+    }
+    codePush {
+        inputLocation "src/main/assets/www/"
+        configuration "javascript.yml"
+    }
+}

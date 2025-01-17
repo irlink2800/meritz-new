@@ -1,0 +1,14 @@
+-verbose
+
+# If you encounter problems in your project, you can let DexGuard instrument
+# your code, so the app prints out configuration suggestions at run-time, in
+# the logcat:
+#
+# -addconfigurationdebugging
+
+# Obfuscate the JavaScript bundle file
+-obfuscatejavascript assets/index.android.bundle
+
+# Specify the JavaScript-specific configuration file
+# (Required when using -obfuscatejavascript)
+-javascriptconfiguration javascript.yml

@@ -1,0 +1,86 @@
+This sample shows how to use DexGuard to protect a Cordova application that uses code push.
+
+Creating a code push app
+========================
+
+In this section you will create a code push app in the App Center (https://appcenter.ms/)
+via the appcenter-cli. If you have already done so, you can skip this section.
+
+First, install the appcenter-cli command.
+
+$ npm install -g appcenter-cli
+
+Next, log in to the appcenter for this cli session. This will open a browser window
+displaying a code that must be copied to the terminal.
+
+$ appcenter login
+
+The following command creates a Cordova Android app on the App Center.
+Replace <appName> with the name of the app you want to create.
+The identifier that you see after 'Owner Name' in the output of this command
+will be referred to as <ownerName> later on.
+
+$ appcenter apps create -d <AppName> -o Android -p Cordova
+
+Next, add a deployment to the code push app. Replace <deploymentName> with
+the name of the deployment you want to create. The deployment key that you
+see in the output of this command will be needed later.
+
+$ appcenter codepush deployment add -a <ownerName>/<appName> <deploymentName>
+
+Building the code push app
+==========================
+
+First, replace "/path/to/dexguard" with the absolute path to your DexGuard folder in the files
+- dexguard-plugin.json
+- build-extras.gradle
+
+After that, add the DexGuard and code push plugins:
+
+$ cordova plugin add cordova-plugin-code-push
+$ cordova plugin add ../../../../cordova
+
+Then, add the Android platform:
+
+$ cordova platform add android
+
+Before building the app, the deployment key defined in
+config.xml must be set.
+Replace MY_KEY in this file with the deployment key.
+
+Next, build the Android app:
+
+$ cordova build android --release
+
+The generated apk can be installed on an emulator or phone.
+
+Releasing and Protecting a code push update
+===========================================
+
+In this section we create a code push update and protect
+the generated update using DexGuard.
+
+First, make a change in the www/js/index.js file so that the pushed changes can be observed.
+
+Generate the update using the command below.
+
+$ cordova prepare android
+
+Protect this update by using DexGuard with the dexguard-project-codepush.txt
+configuration file.
+
+$ ../../../../bin/dexguard.sh -include dexguard-project-codepush.txt
+
+Alternatively, use the code push gradle task in the platforms/android folder:
+
+$ ./gradlew processCodePushUpdateWithDexGuard
+
+Release the protected update to the App Center using the following command.
+The <release> is the release version number you want to push, 1.0.0 for example.
+The <deploymentName> is the name of the deployment you created earlier.
+
+$ appcenter codepush release -a <ownerName>/<appName> -c www-protected/ \
+    -t <release> -d <deploymentName> -m
+
+The installed apk will download and apply the changes that were just pushed.
+After this, the changes made in www/js/index.js earlier should now be observable.

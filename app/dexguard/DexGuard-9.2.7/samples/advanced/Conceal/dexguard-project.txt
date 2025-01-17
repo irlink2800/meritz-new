@@ -1,0 +1,32 @@
+# The default DexGuard configuration already contains the required options to
+# make the Conceal library work properly. The following options are optional
+# suggestions to harden the library further.
+
+# We'll display some more statistics about the processed code.
+-verbose
+
+# We encrypt the native Conceal libraries. Even though the library is open-source,
+# this helps tying the native library and the Java code together. After this step,
+# one can not simply replace the native library with a customized version.
+# By including the native loader library DexGuard will use the
+# native loader to load these encrypted native libraries.
+-encryptnativelibraries lib/**/libconcealjni.so
+-encryptnativelibraries lib/**/libfb.so
+
+# The aggressive name obfuscation that is applied to encrypted native libraries
+# causes the SoFileLoader mechanism to crash. In order to prevent that, we will
+# keep the names of the encrypted native libraries while still encrypting them.
+-keepresourcefiles lib/**/libconcealjni.so
+-keepresourcefiles lib/**/libfb.so
+
+# Encrypting all strings in the Conceal library.
+-encryptstrings class com.facebook.crypto.**
+-encryptstrings class com.facebook.cipher.**
+-encryptstrings class com.facebook.jni.**
+-encryptstrings class com.facebook.android.crypto.**
+
+# In our example we want to hide some more strings.
+-encryptstrings class com.example.ConcealSampleActivity {
+    java.lang.String ENTITY_ID;
+    java.lang.String FILE;
+}

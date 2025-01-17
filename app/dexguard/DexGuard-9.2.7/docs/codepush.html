@@ -1,0 +1,1506 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for the DexGuard tool">
+      
+      
+      
+        <meta name="author" content="Guardsquare">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="img/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>Code Push - DexGuard</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.adb8469c.css">
+      
+      
+    
+    
+      <script src="assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/extra2.css">
+    
+      <link rel="stylesheet" href="css/tabs.css">
+    
+    
+      
+    
+    
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMXSB9');</script>
+<!-- End Google Tag Manager -->
+
+
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#dexguard-standalone" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMXSB9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+   
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="DexGuard" aria-label="DexGuard" class="md-header-nav__button md-logo">
+          
+            <img alt="logo" src="img/logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              DexGuard
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Code Push
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="DexGuard" class="md-nav__button md-logo">
+      
+        <img alt="logo" src="img/logo.png" width="48" height="48">
+      
+    </a>
+    DexGuard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="quickstart.html" title="Quick Start" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/standalone.html" title="DexGuard" class="md-nav__link">
+      DexGuard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/upgrading.html" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/gradle-plugin.html" title="Gradle Plugin" class="md-nav__link">
+      Gradle Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/repository.html" title="Maven repository" class="md-nav__link">
+      Maven repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/espresso.html" title="Espresso" class="md-nav__link">
+      Espresso
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="setup/cordovaplugin.html" title="Cordova Plugin" class="md-nav__link">
+      Cordova Plugin
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="configuration.html" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="usage.html" title="Reference Guide" class="md-nav__link">
+      Reference Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="defaultconfigurations.html" title="Default Configs" class="md-nav__link">
+      Default Configs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="annotations.html" title="Annotations" class="md-nav__link">
+      Annotations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Features
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="protection.html" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="rasp.html" title="RASP" class="md-nav__link">
+      RASP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Languages & Platforms
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Languages & Platforms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="java.html" title="Java" class="md-nav__link">
+      Java
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="kotlin.html" title="Kotlin" class="md-nav__link">
+      Kotlin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="javascript.html" title="JavaScript" class="md-nav__link">
+      JavaScript
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      ThreatCast
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        ThreatCast
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="threatcast.html" title="Configuration" class="md-nav__link">
+      Configuration
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      In Depth
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        In Depth
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="protectionreport.html" title="Protection Report" class="md-nav__link">
+      Protection Report
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="examples.html" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="refcard.html" title="Reference Card" class="md-nav__link">
+      Reference Card
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="optimizations.html" title="Optimizations" class="md-nav__link">
+      Optimizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="attributes.html" title="Attributes" class="md-nav__link">
+      Attributes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="loggingremoval.html" title="Logging Removal" class="md-nav__link">
+      Logging Removal
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="verification.html" title="Verification" class="md-nav__link">
+      Verification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="runtime.html" title="Runtime Library" class="md-nav__link">
+      Runtime Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="plugins.html" title="Encryption Plugins" class="md-nav__link">
+      Encryption Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Code Push
+      </label>
+    
+    <a href="codepush.html" title="Code Push" class="md-nav__link md-nav__link--active">
+      Code Push
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dexguard-standalone" class="md-nav__link">
+    DexGuard standalone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-dexguard-gradle-plugin" class="md-nav__link">
+    Using the DexGuard gradle plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cordova" class="md-nav__link">
+    Cordova
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react-native" class="md-nav__link">
+    React Native
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizational-tips" class="md-nav__link">
+    Organizational tips
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#put-your-dexguard-options-in-a-file" class="md-nav__link">
+    Put your DexGuard options in a file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#share-your-configuration" class="md-nav__link">
+    Share your configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Addons
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Addons
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="addons_overview.html" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ndk.html" title="NDK" class="md-nav__link">
+      NDK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="whitebox.html" title="Whitebox Cryptography" class="md-nav__link">
+      Whitebox Cryptography
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="fingerprinting.html" title="Device Fingerprinting" class="md-nav__link">
+      Device Fingerprinting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="securekeyboard.html" title="Secure Keyboard" class="md-nav__link">
+      Secure Keyboard
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tools/androidstudio.html" title="Android Studio Plugin" class="md-nav__link">
+      Android Studio Plugin
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tools/libraryrulesgenerator.html" title="Library Rules Generator" class="md-nav__link">
+      Library Rules Generator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tools/retrace.html" title="ReTrace" class="md-nav__link">
+      ReTrace
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Troubleshooting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Troubleshooting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="troubleshooting.html" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="reportingissues.html" title="Reporting Issues" class="md-nav__link">
+      Reporting Issues
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="releasenotes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dexguard-standalone" class="md-nav__link">
+    DexGuard standalone
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-dexguard-gradle-plugin" class="md-nav__link">
+    Using the DexGuard gradle plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cordova" class="md-nav__link">
+    Cordova
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react-native" class="md-nav__link">
+    React Native
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organizational-tips" class="md-nav__link">
+    Organizational tips
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#put-your-dexguard-options-in-a-file" class="md-nav__link">
+    Put your DexGuard options in a file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#share-your-configuration" class="md-nav__link">
+    Share your configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Code Push</h1>
+                
+                <p>This page explains how you can apply DexGuard protection to your code push
+update as well. This is a separate step from protecting the app you upload to
+the Play Store or App store and requires no changes to its configuration or
+setup. Both React Native and Cordova code push updates are supported, you can
+find samples for the Android case in the <code>samples/advanced/CodePush</code> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Only JavaScript supported</p>
+<p>Right now, only the JavaScript part of the code push update can be
+protected by DexGuard. Asset and resource files are not supported at the
+moment.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">iOS apps</p>
+<p>While DexGuard can only process Android apps (and not iOS apps), it <strong>can</strong>
+process code push updates for <strong>both</strong> Android and iOS. The steps for both
+are very similar and any differences are indicated by tabs on this page.</p>
+</div>
+<h2 id="dexguard-standalone">DexGuard standalone<a class="headerlink" href="#dexguard-standalone" title="Permanent link">&para;</a></h2>
+<p>You can process your code push update by calling DexGuard on the command line.
+First, you must generate the code push update.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Android</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>react-native bundle <span class="se">\</span>
+    --platform android <span class="se">\</span>
+    --entry-file index.js <span class="se">\</span>
+    --bundle-output CodePush/index.android.bundle <span class="se">\</span>
+    --assets-dest CodePush
+</code></pre></div>
+
+<p>Make sure the <code>CodePush</code> directory exists before you execute this
+command.</p>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>cordova prepare android
+</code></pre></div>
+
+</div>
+</div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">iOS</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>react-native bundle <span class="se">\</span>
+    --platform ios <span class="se">\</span>
+    --entry-file index.js <span class="se">\</span>
+    --bundle-output CodePush/index.ios.bundle <span class="se">\</span>
+    --assets-dest CodePush
+</code></pre></div>
+
+<p>Make sure the <code>CodePush</code> directory exists before you execute this
+command.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>cordova prepare ios
+</code></pre></div>
+
+</div>
+</div>
+</div>
+</div>
+<p>Once the code push update has been generated, you can call DexGuard to process
+it.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>java -jar &lt;dexguard-dir&gt;/lib/dexguard.jar <span class="se">\</span>
+    -injars CodePush <span class="se">\</span>
+    -outjars CodePush-protected <span class="se">\</span>
+    -obfuscatejavascript **.bundle <span class="se">\</span>
+    -javascriptconfiguration javascript.yml
+</code></pre></div>
+
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>java -jar &lt;dexguard-dir&gt;/lib/dexguard.jar <span class="se">\</span>
+    -injars platforms/android/app/src/main/assets/www <span class="se">\</span>
+    -outjars www-protected <span class="se">\</span>
+    -obfuscatejavascript **.js,**.html <span class="se">\</span>
+    -javascriptconfiguration javascript.yml
+</code></pre></div>
+
+</div>
+</div>
+<p>DexGuard will generate the protected code push update to the path specified in
+<code>-outjars</code>. You can then simply upload it to the app center.</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>appcenter codepush release <span class="se">\</span>
+    -a &lt;ownerName&gt;/&lt;appName&gt; <span class="se">\</span>
+    -c CodePush-protected <span class="se">\</span>
+    -t &lt;version&gt; <span class="se">\</span>
+    -d &lt;deployment&gt;
+</code></pre></div>
+
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>appcenter codepush release <span class="se">\</span>
+    -a &lt;ownerName&gt;/&lt;appName&gt; <span class="se">\</span>
+    -c www-protected <span class="se">\</span>
+    -t &lt;version&gt; <span class="se">\</span>
+    -d &lt;deployment&gt;
+</code></pre></div>
+
+</div>
+</div>
+<h2 id="using-the-dexguard-gradle-plugin">Using the DexGuard gradle plugin<a class="headerlink" href="#using-the-dexguard-gradle-plugin" title="Permanent link">&para;</a></h2>
+<p>Alternatively, the DexGuard gradle plugin provides a <code>processCodePushUpdateWithDexGuard</code> task 
+which can do all of these things for you.
+To gain access to this task you simply extend your DexGuard configuration with a <code>codePush</code> block. 
+In this block you have to tell DexGuard where it can find the code push update and which 
+javascript configuration you want to process the update with.  </p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Groovy</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="n">dexguard</span> <span class="o">{</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/DexGuard&#39;</span>
+  <span class="n">license</span> <span class="o">=</span> <span class="s1">&#39;/path/to/dexguard_license.txt&#39;</span>
+  <span class="n">configurations</span> <span class="o">{</span>
+    <span class="n">release</span> <span class="o">{</span>
+      <span class="n">defaultConfiguration</span> <span class="s1">&#39;dexguard-release.pro&#39;</span>
+      <span class="n">configuration</span> <span class="s1">&#39;dexguard-project.txt&#39;</span>
+      <span class="n">configuration</span> <span class="s1">&#39;proguard-project.txt&#39;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="n">codePush</span> <span class="o">{</span>
+    <span class="n">inputLocation</span> <span class="o">=</span> <span class="s1">&#39;/path/to/CodePush&#39;</span>
+    <span class="n">configuration</span> <span class="o">=</span> <span class="s1">&#39;/path/to/javascript.yml&#39;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Kotlin</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="n">dexguard</span> <span class="p">{</span>
+  <span class="n">path</span> <span class="p">=</span> <span class="s">&quot;/path/to/DexGuard&quot;</span>
+  <span class="n">license</span> <span class="p">=</span> <span class="s">&quot;/path/to/dexguard_license.txt&quot;</span>
+  <span class="n">configurations</span> <span class="p">{</span>
+    <span class="n">register</span><span class="p">(</span><span class="s">&quot;release&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">defaultConfiguration</span><span class="p">(</span><span class="s">&quot;dexguard-release.pro&quot;</span><span class="p">)</span>
+      <span class="n">configuration</span><span class="p">(</span><span class="s">&quot;dexguard-project.txt&quot;</span><span class="p">)</span>
+      <span class="n">configuration</span><span class="p">(</span><span class="s">&quot;proguard-project.txt&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">codePush</span> <span class="p">{</span>
+    <span class="n">inputLocation</span> <span class="p">=</span> <span class="s">&quot;/path/to/CodePush&quot;</span>
+    <span class="n">configuration</span> <span class="p">=</span> <span class="s">&quot;/path/to/javascript.yml&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>Once you have configured the task, you can execute it with the following command:</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Linux/macOS</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>./gradlew processCodePushUpdateWithDexGuard
+</code></pre></div>
+
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Windows</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>gradlew processCodePushUpdateWithDexGuard
+</code></pre></div>
+
+</div>
+</div>
+<p>The task will place your protected code push update in the <code>outputs/dexguard/codepush</code> directory.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<h3 id="cordova">Cordova<a class="headerlink" href="#cordova" title="Permanent link">&para;</a></h3>
+<p>When using the <a href="setup/cordovaplugin.html">DexGuard Cordova plugin</a> you can
+encrypt the app's asset files. This is not supported when processing your code
+push updates. You can still encrypt the assets when protecting your app (for
+upload to the Play store), but once these assets are updated as part of a code
+push update the encryption will be removed.</p>
+<h3 id="react-native">React Native<a class="headerlink" href="#react-native" title="Permanent link">&para;</a></h3>
+<p>When processing the app you cannot encrypt any asset or resource file, this
+includes the JavaScript bundle file. The same is true when processing the code
+push update, encrypting any of the asset or resource files is unsupported.</p>
+<h2 id="organizational-tips">Organizational tips<a class="headerlink" href="#organizational-tips" title="Permanent link">&para;</a></h2>
+<h3 id="put-your-dexguard-options-in-a-file">Put your DexGuard options in a file<a class="headerlink" href="#put-your-dexguard-options-in-a-file" title="Permanent link">&para;</a></h3>
+<p>You can simplify the command you have to type by storing the DexGuard options
+in a file, <code>dexguard-codepush.txt</code> for example.</p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-injars </span><span class="err">CodePush</span>
+<span class="nb">-outjars </span><span class="err">CodePush-protected</span>
+
+<span class="nb">-obfuscatejavascript </span><span class="err">**.bundle</span>
+<span class="nb">-javascriptconfiguration </span><span class="err">javascript.yml</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-injars </span><span class="err">platforms/android/app/src/main/assets/www</span>
+<span class="nb">-outjars </span><span class="err">www-protected</span>
+
+<span class="nb">-obfuscatejavascript </span><span class="err">**.js,**.html</span>
+<span class="nb">-javascriptconfiguration </span><span class="err">javascript.yml</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>You can then call DexGuard and pass in this file.</p>
+<div class="codehilite"><pre><span></span><code>java -jar &lt;dexguard-dir&gt;/lib/dexguard.jar -include dexguard-codepush.txt
+</code></pre></div>
+
+<h3 id="share-your-configuration">Share your configuration<a class="headerlink" href="#share-your-configuration" title="Permanent link">&para;</a></h3>
+<p>You may have noticed that you have to configure JavaScript obfuscation when
+processing both your app and code push update. It is possibe to share this
+configuration, simply put the common parts in a separate file,
+<code>dexguard-javascript.txt</code> for example.</p>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">React- Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">**.bundle</span>
+<span class="nb">-javascriptconfiguration </span><span class="err">javascript.yml</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">**.js,**.html</span>
+<span class="nb">-javascriptconfiguration </span><span class="err">javascript.yml</span>
+</code></pre></div>
+
+</div>
+</div>
+<p>You can then include this file when processing your app and code push update</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Processing app (build.gradle)</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="n">dexguard</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">configurations</span> <span class="o">{</span>
+        <span class="n">release</span> <span class="o">{</span>
+            <span class="n">defaultConfiguration</span> <span class="s1">&#39;dexguard-release.pro&#39;</span>
+            <span class="n">configuration</span> <span class="s1">&#39;dexguard-project.txt&#39;</span>
+            <span class="n">configuration</span> <span class="s1">&#39;dexguard-javascript.txt&#39;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Processing code push update</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code>java -jar &lt;dexguard-dir&gt;/lib/dexguard.jar <span class="se">\</span>
+    -include dexguard-codepush.txt <span class="se">\</span>
+    -include dexguard-javascript.txt
+</code></pre></div>
+
+</div>
+</div>
+<p>Alternatively, you can also include the <code>dexguard-javascript.txt</code> configuration
+file in your configurations directory using the <code>-include</code> option. Below is an
+example of this in <code>dexguard-codepush.txt</code>.</p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">React Native</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-injars </span><span class="err">CodePush</span>
+<span class="nb">-outjars </span><span class="err">CodePush-protected</span>
+<span class="nb">-include </span><span class="err">dexguard-javascript.txt</span>
+</code></pre></div>
+
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Cordova</label><div class="tabbed-content">
+<div class="codehilite"><pre><span></span><code><span class="nb">-injars </span><span class="err">platforms/android/app/src/main/assets/www</span>
+<span class="nb">-outjars </span><span class="err">www-protected</span>
+<span class="nb">-include </span><span class="err">dexguard-javascript.txt</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Differing paths</p>
+<p>Be warned that the files have a different path in the app than they have in
+the code push update, so the rules to target them might differ!</p>
+<p>For example, when using Cordova and trying to obfuscate the <code>index.js</code> file
+you would use the following rule for the app
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">assets/www/js/index.js</span>
+</code></pre></div>
+and this rule for the code push update
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">www/js/index.js</span>
+</code></pre></div></p>
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">Android</label><div class="tabbed-content">
+<p>For React Native you would use this rule for the app
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">assets/index.android.bundle</span>
+</code></pre></div>
+and the rule below for the code push update (assuming the root
+directory we used in our examples above)
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">CodePush/index.android.bundle</span>
+</code></pre></div></p>
+</div>
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">iOS</label><div class="tabbed-content">
+<p>For React Native you would use this rule for the app
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">assets/index.ios.bundle</span>
+</code></pre></div>
+and the rule below for the code push update (assuming the root
+directory we used in our examples above)
+<div class="codehilite"><pre><span></span><code><span class="nb">-obfuscatejavascript </span><span class="err">CodePush/index.ios.bundle</span>
+</code></pre></div></p>
+</div>
+</div>
+<p>The rules given as an example on this page work for both apps and code push
+updates due to the use of wildcards.</p>
+</div>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="plugins.html" title="Encryption Plugins" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Encryption Plugins
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="addons_overview.html" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Overview
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Guardsquare
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/guardsquare" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/guardsquare-nv" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://www.facebook.com/guardsquare" target="_blank" rel="noopener" title="facebook" class="md-footer-social__link fa fa-facebook"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+    
+  </body>
+</html>

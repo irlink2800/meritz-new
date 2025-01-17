@@ -1,0 +1,32 @@
+# This configuration file illustrates the necessary options
+# for processing an apk in standalone mode.
+#
+# Add your own custom rules to dexguard-project.txt, which
+# is included at the end of this file.
+
+# Specify the unprotected application as input.
+-injars StringEncryption-unprotected.apk(!META-INF/*)
+
+# Specify the name of the processed application.
+-outjars StringEncryption-protected.apk
+
+# Pass the path to your Android SDK as a system property called ANDROID_HOME,
+# or replace <ANDROID_HOME> in the path below with the correct path.
+-libraryjars <ANDROID_HOME>/platforms/android-23/android.jar
+
+# Include the default release configuration (contained inside dexguard.jar).
+-include /lib/dexguard-release.pro
+
+# Specify the keystore configuration.
+-keystore ../../debug.keystore
+-keystorepassword android
+-keyalias androiddebugkey
+-keypassword android
+
+# Specify additional outputs.
+-printusage   usage.txt
+-printmapping mapping.txt
+-printseeds   seeds.txt
+
+# Include the actual rules.
+-include dexguard-project.txt

@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        maven {
+            url '../../../lib'          // For the DexGuard plugin.
+        }
+        google()                        // For the Android plugin.
+        mavenCentral()                       // For anything else.
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+        //noinspection GradleDynamicVersion
+        classpath 'com.guardsquare:dexguard-gradle-plugin:+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'dexguard'
+
+repositories {
+    google()  // For the Android support libraries.
+    mavenCentral() // For any other libraries.
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:21.0.3'
+    implementation 'com.scottyab:secure-preferences-lib:0.1.4@aar'
+}
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.0"
+        signingConfig signingConfigs.debug
+    }
+
+    signingConfigs {
+        debug {
+            storeFile     file('../../debug.keystore')
+                storePassword 'android'
+                keyAlias      'androiddebugkey'
+                keyPassword   'android'
+        }
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['assets']
+            res.srcDirs = ['res']
+            aidl.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            java.srcDirs = ['src']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+dexguard {
+    path = '../../..'
+    // We can build the sample with the sample license file
+    license = '../../../lib/dexguard-license.txt'
+    configurations {
+        debug {
+            defaultConfiguration 'dexguard-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        release {
+            defaultConfiguration 'dexguard-release.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}

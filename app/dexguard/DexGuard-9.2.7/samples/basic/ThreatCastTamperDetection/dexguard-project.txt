@@ -1,0 +1,13 @@
+# DexGuard's default settings are fine for this sample application.
+
+# We'll display some more statistics about the processed code.
+-verbose
+
+-raspchecks apktamper,certificatetamper,filetamper,hook,root,emulator,debug
+
+# The build/outputs/dexguard/mapping/apk/<variant>/threatcast-mapping.yml file will contain a mapping
+# which you can upload to the ThreatCast server to see more information about detected threats.
+
+# Set-up your API key.
+# This is a sample key, you can download your own API key from the ThreatCast dashboard.
+-threatcastapikey ewogICAgImtleSI6IjM1MDA3NmEwMzVmYmEwYjc4MGQxOGUwNTE3ZDIwMGM4YWFmYmI1NDRhMmE4ZjIyODkiLAogICAgImZsYWdzIjogewogICAgICAgICAiaGVhcnRiZWF0cyI6dHJ1ZQogICAgIH0sCiAgICAgImVuZHBvaW50IjoiZXhhbXBsZS5jb20iCn0=

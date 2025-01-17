@@ -1,0 +1,6 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# Keep the Handler class but allow obfuscation so that we can see
+# the obfuscated names in the stacktrace
+-keep,allowobfuscation class com.example.Handler { *; }

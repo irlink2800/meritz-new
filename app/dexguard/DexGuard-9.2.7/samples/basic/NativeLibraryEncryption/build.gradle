@@ -1,0 +1,117 @@
+// The Gradle plugin currently expects the native libraries prepackaged in a
+// jar in the libs directory.
+
+buildscript {
+    repositories {
+        maven {
+            url '../../../lib'          // For the DexGuard plugin.
+        }
+        google()                        // For the Android plugin.
+        mavenCentral()                       // For anything else.
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+        //noinspection GradleDynamicVersion
+        classpath 'com.guardsquare:dexguard-gradle-plugin:+'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'dexguard'
+
+repositories {
+    flatDir { dirs 'libs' } // For the DexGuard native loader.
+    google()                // For the Android support libraries.
+    mavenCentral()               // For any other libraries.
+}
+
+dependencies {
+    // By including the DexGuard native loader library DexGuard
+    // will use the native loader to load encrypted native libraries.
+    implementation(name: 'dexguard-nativeloader', ext: 'aar')
+}
+
+android {
+    compileSdkVersion 28
+
+    signingConfigs {
+        debug {
+            storeFile     file('../../debug.keystore')
+            storePassword 'android'
+            keyAlias      'androiddebugkey'
+            keyPassword   'android'
+        }
+    }
+
+    // Optionally build the native library from Gradle.
+    //externalNativeBuild {
+    //    cmake {
+    //        path "CMakeLists.txt"
+    //    }
+    //}
+
+    defaultConfig {
+        minSdkVersion    11
+        targetSdkVersion 29
+        signingConfig signingConfigs.debug
+
+        //externalNativeBuild {
+        //    cmake {
+        //        targets 'secret'
+        //        // Optionally obfuscate the native code
+        //        // with the DexGuard NDK addon.
+        //        //arguments '-DANDROID_TOOLCHAIN=bitguard'
+        //        //abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        //    }
+        //}
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs         = ['src']
+            resources.srcDirs    = ['src']
+            aidl.srcDirs         = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs          = ['res']
+            assets.srcDirs       = ['assets']
+            jniLibs.srcDirs      = ['libs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    // Optionally split the apk per architecture.
+    //splits {
+    //    abi {
+    //        enable true
+    //        reset()
+    //        include "armeabi-v7a", "arm64-v8a", "x86", "x86_64", "mips", "mips64"
+    //        universalApk false
+    //     }
+    //}
+}
+
+
+dexguard {
+    path = '../../..'
+    // We can build the sample with the sample license file
+    license = '../../../lib/dexguard-license.txt'
+    configurations {
+        debug {
+            defaultConfiguration 'dexguard-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        release {
+            defaultConfiguration 'dexguard-release-aggressive.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}

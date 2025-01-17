@@ -1,0 +1,5 @@
+This sample illustrates how DexGuard be integrated using the kotlin dsl plugin
+in the buildSrc module.
+
+It is not mandatory to include DexGuard like that, it can perfectly be added
+in the root project build.gradle.kts if preferred (see build.gradle.kts.other).

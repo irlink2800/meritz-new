@@ -1,0 +1,33 @@
+# Display some more statistics about the processed code.
+-verbose
+
+# Explicitly enable apk signature scheme v3, since it is not enabled by
+# default yet. The Android Gradle plugin 3.2.0-beta05 has options for
+# v1 and v2, but not for v3 yet.
+
+-apksignatureschemes v1,v2,v3
+
+# The certificate lineage file that specifies our subsequent certificates.
+
+-certificatelineage debug.lineage
+
+# It's optional in this case, since we only have two certificates, and we're
+# specifying both of them. DexGuard can then create the certificate lineage
+# for us.
+#
+# The signing keys are always required, since the certificate lineage file
+# contains certificates but not the corresponding private keys.
+
+# The oldest signing key is already specified in build.gradle.
+
+#-keystore         debug1.keystore
+#-keystorepassword android
+#-keyalias         AndroidDebugKey
+#-keypassword      android
+
+# We specify the replacement signing key here.
+
+-keystore         debug2.keystore
+-keystorepassword android
+-keyalias         AndroidDebugKey
+-keypassword      android

@@ -1,0 +1,20 @@
+This sample illustrates how you can use DexGuard to protect
+a ReactNative application.
+
+To execute it, you first have to install the node modules in the root
+directory. Run the following command in the ReactNative directory:
+
+$ npm install
+
+When the command is executed successfully, you should see the
+installed modules in node_modules.
+
+You can now run the sample by navigating to the android/ directory and executing:
+
+$ ./gradlew clean assembleRelease
+
+Tap the `ReactNativeSample` icon to launch the application.
+
+
+Limitations:
+Asset encryption is currently not supported for ReactNative applications.

@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'dexguard'
+
+repositories {
+    google()  // For the Android support libraries.
+    mavenCentral() // For any other libraries.
+}
+
+dependencies {
+    implementation project(':library')
+}
+
+android {
+    compileSdkVersion 28
+
+    useLibrary 'org.apache.http.legacy'
+
+    signingConfigs {
+        debug {
+            storeFile     file('../../../debug.keystore')
+            storePassword 'android'
+            keyAlias      'androiddebugkey'
+            keyPassword   'android'
+        }
+    }
+
+    defaultConfig {
+        // Devices >= 3 have version of Android Market that 
+        // supports licensing.
+        // Requiring minimum Sdk version = 4 for ILicensingService 
+        // work-around.
+        minSdkVersion    4
+        targetSdkVersion 29
+        signingConfig signingConfigs.debug
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs         = ['src']
+            resources.srcDirs    = ['src']
+            aidl.srcDirs         = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs          = ['res']
+            assets.srcDirs       = ['assets']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+dexguard {
+    path = '../../../..'
+    // We can build the sample with the sample license file
+    license = '../../../../lib/dexguard-license.txt'
+    configurations {
+        debug {
+            defaultConfiguration 'dexguard-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        release {
+            defaultConfiguration 'dexguard-release.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}

@@ -1,0 +1,143 @@
+<resources>
+
+    <!-- app name -->
+    <string name="app_name">메리츠 모바일</string>
+    <string name="app_eng_name">Meritz Mobile</string>
+
+    <!-- cipher key -->
+    <string name="key">a5c2e1f8152cdc1ca5c2e1f8152cdc1c</string>
+
+    <!-- view -->
+    <string name="calandar_title1">배정일</string>
+    <string name="calandar_title2">예약일</string>
+    <string name="search_customer">고객 검색</string>
+    <string name="searchcust_contents">검색할 <b>고객명</b>을 입력하세요.</string>
+    <string name="searchfile_contents">전송할 <b>파일명</b>을 입력하세요.</string>
+
+    <string name="rec_suc_text">녹취 전송 성공</string>
+    <string name="rec_fail_text">녹취 전송 실패</string>
+    <string name="rec_force_text">녹취 강제 전송</string>
+
+    <string name="msg_in_text">문자 수신</string>
+    <string name="msg_out_text">문자 발신</string>
+
+    <string name="incall_type1">인콜수신방법 : 통화</string>
+    <string name="incall_type2">인콜수신방법 : 콜백</string>
+
+    <string name="result_ok_panding">타엡에서 %1$s 제어를 이미 사용하고 있습니다.</string>
+    <string name="result_ok">성공</string>
+    <string name="result_error_connection">바인딩 실패</string>
+    <string name="result_failed">실패</string>
+    <string name="result_error">에러</string>
+    <string name="result_uninstalled">%1$s 미설치</string>
+    <string name="result_unregistered">%1$s 미인증</string>
+    <string name="result_old_version_installed">%1$s 이전버전 설치됨</string>
+    <string name="result_no_permission">앱이 권한을 가지고 있지 않습니다.</string>
+
+    <string name="common_dialog_title_notice">알림</string>
+    <string name="boot_sleep_200s_message">법인폰 전원이 켜지고 3분 이후에 로그인이 가능합니다.\n(로그인은 %d초 이후에 가능합니다.)</string>
+    <string name="unknown_error">알수없는 오류입니다. 잠시 후 다시 실행해 주시기 바랍니다.</string>
+    <string name="common_button_ok">확인</string>
+    <string name="unregistered_ssm">모바일보안앱이 인증되지 않았습니다. 인증 후 다시 시도 하여 주시기 바랍니다.</string>
+
+    <string name="password">비밀번호</string>
+    <string name="check_password">비밀번호 확인</string>
+    <string name="birth_date">생년월일</string>
+    <string name="plz_input_birth_date">생년월일을 입력하십시오.</string>
+    <string name="plz_set_unlock_password">잠금해제 비밀번호를 설정하세요.</string>
+    <string name="login">로그인</string>
+    <string name="logout">로그아웃</string>
+
+    <string name="os_version">OS 버전</string>
+    <string name="call_mode">전화 모드</string>
+    <string name="device_id">Device ID</string>
+
+    <string name="sabun">사 번</string>
+    <string name="plz_input_sabun">사번을 입력하십시오.</string>
+    <string name="unlock">잠금 해제</string>
+    <string name="plz_input_password">비밀번호를 입력하십시오.</string>
+
+    <string name="wifi">WiFi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="tethering">Tethering</string>
+    <string name="usb">USB</string>
+    <string name="camera">카메라</string>
+    <string name="gps">GPS</string>
+    <string name="mike">마이크</string>
+    <string name="ext_sdcard">외부SD카드</string>
+    <string name="capture">화면 Capture</string>
+
+    <string name="hint_enter_a_message">메세지를 입력해주세요…</string>
+    <string name="date_header_today">오늘</string>
+    <string name="date_header_yesterday">어제</string>
+
+    <string name="close">닫기</string>
+    <string name="setting">설정</string>
+    <string name="install">설치</string>
+
+    <string name="consultation_customer">상담고객</string>
+    <string name="assigned_customer">배정고객</string>
+    <string name="reservation_customer">예약고객</string>
+    <string name="assigned_date">배정일</string>
+    <string name="funnel">유입경로</string>
+    <string name="this_is_metis_call">메티스로 거는 통화입니다.</string>
+    <string name="call_history">통화내역</string>
+    <string name="message_history">문자내역</string>
+    <string name="next">다음 &gt;</string>
+    <string name="no_data">데이터가 없습니다.</string>
+
+    <string name="consultation_result_memo">상담결과 메모</string>
+    <string name="consultation_result">상담결과</string>
+    <string name="memo">메모</string>
+    <string name="corporate_phone_consultation_call">법인폰상담통화</string>
+    <string name="save">저장</string>
+
+    <string name="send">전송</string>
+    <string name="create">생성</string>
+    <string name="cancel">취소</string>
+    <string name="select_tm_result">상담결과 선택</string>
+    <string name="resend_history">이력 재전송</string>
+
+    <string name="admin_screen">관리자 화면</string>
+    <string name="new_history_registration">신규 이력 등록</string>
+    <string name="file_encrypt">파일 암호화</string>
+    <string name="send_file">파일 전송</string>
+    <string name="send_log">로그 전송</string>
+    <string name="customer_id">고객 ID</string>
+    <string name="customer_name">고객명</string>
+    <string name="contact">연락처</string>
+    <string name="plz_input_customer_id">고객 ID를 입력해주세요.</string>
+    <string name="plz_input_customer_name">고객명을 입력해주세요.</string>
+    <string name="plz_input_contact">연락처를 입력해주세요.</string>
+    <string name="start_call">통화시작</string>
+    <string name="end_call">통화종료</string>
+    <string name="set_time">시간 설정</string>
+    <string name="io_whether">수발신여부</string>
+    <string name="record_file_name">녹취파일명</string>
+    <string name="save_metis_whether">메티스 저장여부</string>
+    <string name="call_result_code">통화결과코드</string>
+
+    <string name="notify_user_for_meritz_call">모바일 메리츠로 통화를 걸어 주세요.</string>
+    <string name="notify_network_error">서버 접속 문제로 통화를 하실 수 없습니다.</string>
+    <string name="notify_user_for_login">로그인이 되어 있지 않아 통화를 하실 수 없습니다. 재 로그인 부탁드리겠습니다.</string>
+
+    <string name="blocking_user_input">유저 입력 차단중</string>
+    <string name="privacy_protected">개인정보 표시 제한</string>
+
+    <string name="download_set_description">다운로드 진행 중</string>
+
+    <string name="notification_service_group_name">서비스 유형</string>
+
+    <string name="notification_service_channel_name">Services</string>
+
+    <string name="permission_denied_message">[설정] > [권한]에서 권한을 허용해 주세요</string>
+
+    <string name="update_title">업데이트</string>
+    <string name="update_message">설치된 앱이 최신 버전이 아닙니다.\n업데이트가 필요합니다.</string>
+
+    <string name="warning">경고</string>
+    <string name="inbound">수신</string>
+    <string name="outbound">발신</string>
+    <string name="recording_file_error_message">녹취 파일 생성 실패</string>
+
+</resources>

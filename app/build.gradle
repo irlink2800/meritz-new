@@ -1,0 +1,231 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.google.gms.google-services'
+
+apply plugin: 'dexguard'
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.irlink.meritz"
+
+        versionCode 39
+        versionName "1.9.5"
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        ndk {
+            abiFilters(*rootProject.ext.ndkAbiFilters)
+        }
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+
+        manifestPlaceholders = [
+                manifestApplicationId: "${applicationId}"
+        ]
+
+        vectorDrawables.useSupportLibrary = true
+
+        resConfigs "ko", "en"
+
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        keystore {
+            def keystoreProperties = loadKeystore("./app/keystore/keystore.properties")
+            storeFile file(keystoreProperties.storeFile)
+            storePassword keystoreProperties.storePassword
+            keyAlias keystoreProperties.keyAlias
+            keyPassword keystoreProperties.keyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.keystore
+        }
+        release {
+            minifyEnabled false
+            debuggable true
+            signingConfig signingConfigs.keystore
+        }
+    }
+
+    kapt {
+        generateStubs = true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    kotlinOptions {
+        jvmTarget = rootProject.ext.javaVersion.toString()
+    }
+
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
+}
+
+dexguard {
+    path = './dexguard/DexGuard-9.2.7/'
+    license = './dexguard/DexGuard-9.2.7/lib/dexguard-license.txt'
+    configurations {
+        release {
+            defaultConfiguration 'dexguard-release.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        debug {
+            defaultConfiguration 'dexguard-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}
+
+def loadKeystore(filePath) {
+    def properties = new Properties()
+    properties.load(new FileInputStream(rootProject.file(filePath)))
+    return properties
+}
+
+def loadProperties(filePath) {
+    return "\"" +
+            file(filePath).text
+                    .replace("\"", "\\\"")
+                    .replace(" ", "")
+                    .replace("\n", "")
+                    .replace("\r", "") +
+            "\""
+}
+
+def createApk() {
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (outputFileName.endsWith('.apk')) {
+                def date = new Date().format('yyyyMMddHHmm')
+
+                def dir = "./apk/" + variant.applicationId + "/" + variant.versionName + "(" + variant.versionCode + ')'
+                def apk = variant.applicationId + "-" + variant.versionName + "(" + variant.versionCode + ")" + "-" + date + ".apk"
+
+                outputFileName = new File(dir, apk)
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    kapt "androidx.databinding:databinding-compiler:$gradle_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Android Support
+    implementation "androidx.core:core-ktx:${rootProject.ext.androidxVersion}"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.appcompatVersion}"
+
+    // Support
+    implementation "com.google.android:flexbox:${rootProject.ext.flexboxVersion}"
+    implementation "com.google.android.material:material:${rootProject.ext.materialVersion}"
+
+    // AAC - ViewModel and LiveData and Lifecycle
+    implementation "androidx.lifecycle:lifecycle-service:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${rootProject.ext.lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:${rootProject.ext.lifecycleVersion}"
+
+    // AAC - Room
+    kapt "androidx.room:room-compiler:${rootProject.ext.roomVersion}"
+    implementation "androidx.room:room-runtime:${rootProject.ext.roomVersion}"
+    implementation "androidx.room:room-rxjava2:${rootProject.ext.roomVersion}"
+    testImplementation "androidx.room:room-testing:${rootProject.ext.roomVersion}"
+
+    // RxAndroid
+    implementation "io.reactivex.rxjava3:rxkotlin:${rootProject.ext.rxKotlinVersion}"
+    implementation "io.reactivex.rxjava3:rxandroid:${rootProject.ext.rxAndroidVersion}"
+    implementation "com.github.akarnokd:rxjava3-bridge:${rootProject.ext.rx3BridgeVersion}"
+
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+
+    // Moshi
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:${rootProject.ext.moshiVersion}"
+    implementation "com.squareup.moshi:moshi-kotlin:${rootProject.ext.moshiVersion}"
+
+    // Retrofit2
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-moshi:${rootProject.ext.retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-scalars:${rootProject.ext.retrofitVersion}"
+
+    // Socket.IO
+    implementation("io.socket:socket.io-client:${rootProject.ext.socketIoVersion}") {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    // Permission
+    implementation "gun0912.ted:tedpermission-rx2:${rootProject.ext.tedpermissionVersion}"
+
+    // ActivityResult
+    implementation "gun0912.ted:tedonactivityresult-rx2:${rootProject.ext.tedActivityResultVersion}"
+
+    // CommonsText
+    implementation "org.apache.commons:commons-text:${rootProject.ext.commonsTextVersion}"
+
+    // IR-Recorder
+    implementation(name: "IRRecorder-v${rootProject.ext.irRecorderVersion}", ext: 'aar')
+
+    // Sms-library
+    implementation project(':library')
+
+    // chatkit
+    implementation(name: "chatkit-v0.4.1", ext: 'aar')
+
+    // rxrecycler-adapter
+    implementation(name: "rxrecycler-adapter-v1.3.2", ext: 'aar')
+
+    // TimePickerWithSeconds
+    implementation(name: "TimePickerWithSeconds-v1.0.1", ext: 'aar')
+
+    implementation 'com.commonsware.cwac:saferoom:0.4.4'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.9@aar'
+}

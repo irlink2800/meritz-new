@@ -1,0 +1,32 @@
+This sample illustrates how DexGuard can create app bundles with dynamic features.
+
+You can let DexGuard create app bundles just like the standard Android Gradle
+plugin, for example:
+
+    ./gradlew bundleDebug
+or
+    ./gradlew bundleRelease
+
+You can then upload the resulting app bundle file to the Google Play store.
+Note that you need to sign your app with your upload key, and let Google sign
+the target apk files with your app key.
+
+You can also inspect the resulting app bundle file yourself with any standard
+zip tool. For example:
+
+    unzip -l app/build/outputs/bundle/debug/app-debug-protected.aab
+
+For testing, you can use Google's bundletool to create the target apk files,
+for example:
+
+    bundletool build-apks \
+      --overwrite \
+      --ks=../../debug.keystore \
+      --ks-pass=pass:android \
+      --ks-key-alias=androiddebugkey \
+      --key-pass=pass:android \
+      --bundle=app/build/outputs/bundle/debug/app-debug-protected.aab \
+      --output=app.apks
+
+The output file app.apks is another zip archive containing the apk
+files.

@@ -1,0 +1,8 @@
+This sample illustrates how DexGuard can process Android Things applications.
+
+The sample demonstrates how to run TensorFlow Lite inference on Android
+Things. Push a button to capture an image with the camera, and TensorFlow Lite
+will tell you what it is!
+
+Info:   https://androidthings.withgoogle.com/#!/samples/sample-tensorflow-imageclassifier
+Source: https://github.com/androidthings/sample-tensorflow-imageclassifier

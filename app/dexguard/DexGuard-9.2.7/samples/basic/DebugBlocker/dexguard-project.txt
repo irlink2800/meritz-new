@@ -1,0 +1,7 @@
+# DexGuard's default settings are fine for this sample application.
+
+# We'll display some more statistics about the processed code.
+-verbose
+
+# Encrypt all strings in the class that blocks debugger and sets up the activity.
+-encryptstrings class com.example.DebugBlockerActivity$Delegate

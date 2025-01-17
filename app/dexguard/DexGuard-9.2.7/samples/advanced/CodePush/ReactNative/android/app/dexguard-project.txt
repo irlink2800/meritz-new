@@ -1,0 +1,57 @@
+-verbose
+
+-keepresources string/CodePushDeploymentKey
+-keepresources string/CODE_PUSH_APK_BUILD_TIME
+
+-keepresourcefiles lib/**/libjsc*.so
+-keepresourcefiles lib/**/libreactnativeblob.so
+
+# If you encounter problems in your project, you can let DexGuard instrument
+# your code, so the app prints out configuration suggestions at run-time, in
+# the logcat:
+#
+#-addconfigurationdebugging
+
+-keepclassmembers class com.facebook.react.views.text.ReactVirtualTextShadowNode {
+  <methods>; 
+} 
+
+-keepclassmembers class com.facebook.react.views.text.ReactTextShadowNode {
+     <methods>;
+}
+
+-keepclassmembers class com.facebook.react.views.textinput.ReactTextInputShadowNode {
+   <methods>;
+ }
+
+-keepclassmembers class com.facebook.react.views.text.ReactBaseTextShadowNode {
+     <methods>;
+ }
+
+-keepclassmembers class com.facebook.react.views.text.ReactRawTextShadowNode {
+     <methods>;
+}
+
+-keepclassmembers class com.facebook.react.views.modal.ModalHostShadowNode {
+     <methods>;
+}
+-keepclassmembers class com.facebook.react.views.text.frescosupport.FrescoBasedReactTextInlineImageShadowNode {
+    <methods>;
+}
+-keepclassmembers class com.facebook.react.views.text.ReactTextInlineImageShadowNode {
+    <methods>;
+}
+-keepclassmembers class com.facebook.react.views.switchview.ReactSwitchManager$ReactSwitchShadowNode {
+    <methods>;
+}
+-keepclassmembers class com.facebook.react.views.slider.ReactSliderManager$ReactSliderShadowNode {
+    <methods>;
+}
+-keepclassmembers class com.facebook.react.views.progressbar.ProgressBarShadowNode {
+    <methods>;
+}
+-keepclassmembers class com.facebook.react.uimanager.LayoutShadowNode {
+    <methods>;
+}
+
+-keep class com.facebook.react.modules.blob.BlobCollector { *; }

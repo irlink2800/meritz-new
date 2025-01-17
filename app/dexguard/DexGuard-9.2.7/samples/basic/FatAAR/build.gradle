@@ -1,0 +1,72 @@
+buildscript {
+    repositories {
+        maven {
+            url '../../../lib'       // For the DexGuard plugin.
+        }
+        google()                        // For the Android plugin.
+        mavenCentral()                       // For anything else.
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath 'com.guardsquare:dexguard-gradle-plugin:+'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'dexguard'
+
+repositories {
+    google()  // For the Android support libraries.
+    mavenCentral() // For any other libraries.
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    // This line causes the resulting aar to be "fat" and ensures it includes the specified dependencies.
+    embed(name: 'library-debug', ext: 'aar')
+}
+
+android {
+    compileSdkVersion 28
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs         = ['src']
+            resources.srcDirs    = ['src']
+            aidl.srcDirs         = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs          = ['res']
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion    11
+        targetSdkVersion 29
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+}
+
+dexguard {
+    path = '../../..'
+    // We can build the sample with the sample license file
+    license = '../../../lib/dexguard-license.txt'
+    configurations {
+        debug {
+            defaultConfiguration 'dexguard-library-debug.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+        release {
+            defaultConfiguration 'dexguard-library-release-aggressive.pro'
+            configuration 'dexguard-project.txt'
+            configuration 'proguard-project.txt'
+        }
+    }
+}

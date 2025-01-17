@@ -1,0 +1,6 @@
+# Obfuscate the JavaScript bundle file
+-obfuscatejavascript **.bundle
+
+# Specify the JavaScript-specific configuration file
+# (Required when using -obfuscatejavascript)
+-javascriptconfiguration javascript.yml

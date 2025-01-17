@@ -1,0 +1,60 @@
+Encrypt Cordova Applications
+=============================
+You can start by building your Cordova project for Android. For example:
+
+   cordova build android
+
+Next, navigate to the Android project under platforms/android/.
+
+Perform the following steps to be able to use asset encryption.
+
+1) Include the Dexguard library in your Cordova Android project.
+   You can do this by copying the dexguard-runtime.aar library from
+   /lib/dexguard-runtime.aar to the libs/ directory of your Android project.
+
+2)  Now we need to transform the MainActivity of the Cordova application. The
+    following code shows how to transform the MainActivity to use Dexguard's
+    EncryptedSystemWebViewClient:
+
+    /**
+     * Sample activity that shows a Cordova web view.
+     */
+    public class HelloWorldActivity extends CordovaActivity {
+
+        // An arbitrary http URL prefix to refer to local assets
+        // (encrypted or not).
+        private static final String ENCRYPTED_ASSET_PREFIX = "file://_/";
+
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            // Start Cordova with the main page.
+            super.onCreate(savedInstanceState);
+            super.init();
+            super.loadUrl(ENCRYPTED_ASSET_PREFIX + "www/index.html");
+        }
+
+        @Override
+        protected CordovaWebViewEngine makeWebViewEngine() {
+            CordovaWebViewEngine engine = super.makeWebViewEngine();
+
+            SystemWebView webView = (SystemWebView) engine.getView();
+
+            // Configure an encrypted SystemWebViewClient on the webView.
+            EncryptedSystemWebViewClient webViewClient =
+                new EncryptedSystemWebViewClient((SystemWebViewEngine) engine,
+                                                 getAssets(),
+                                                 ENCRYPTED_ASSET_PREFIX);
+            webView.setWebViewClient(webViewClient);
+
+            return engine;
+        }
+    }
+
+3)  Finally, make sure that your dexguard-project.txt includes the option to
+    encrypt all the assets files:
+
+    -encryptassetfiles assets/**
+
+For specific configurations for the CrossWalk framework, see its
+respective sample.

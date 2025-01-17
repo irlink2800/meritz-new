@@ -1,0 +1,15 @@
+# DexGuard's default settings are fine for this sample application.
+
+# In case you want to disable optimizations completely for the
+# espresso tests enable the following option.
+# -dontoptimize
+
+# Add additional rules that are necessary to keep classes / methods
+# that are accessed by your tests.
+
+# Some static methods from guava are used in the tests.
+# Keep them to prevent class merging when using the aggressive configuration.
+
+-keep,allowobfuscation class com.google.common.base.Preconditions {
+    static java.lang.Object checkNotNull(java.lang.Object);
+}

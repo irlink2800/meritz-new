@@ -1,0 +1,1 @@
+# DexGuard's default settings are fine for this sample application.

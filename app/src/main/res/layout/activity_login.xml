@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.irlink.meritz.ui.screen.login.LoginViewModel" />
+
+        <variable
+            name="selectIdx"
+            type="int" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_osVer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:text="@{viewModel.osVersionText}"
+                android:textIsSelectable="true"
+                tools:text="OS 버전: 11" />
+
+            <TextView
+                android:id="@+id/tv_appVer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:text="@{viewModel.appVersionText}"
+                tools:text="v1.0.0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_call_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:text="@{viewModel.callModeText}"
+                android:textIsSelectable="true"
+                tools:text="전화 모드: 삼성 전화" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_device_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:text="@{viewModel.deviceIdText}"
+                android:textIsSelectable="true"
+                tools:text="Device ID: af00cc9988754329" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="173.3dp"
+            android:layout_height="25.7dp"
+            android:layout_marginTop="51.7dp"
+            android:layout_weight="0"
+            android:background="@drawable/meritz_direct_bi_main" />
+
+        <LinearLayout
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="31.3dp"
+            android:layout_weight="0"
+            android:background="@drawable/login_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_num"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="35dp"
+                android:background="@{selectIdx == 1 ? @drawable/value_frame_focus : @drawable/value_frame}"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_num"
+                    android:layout_width="73dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="-6sp"
+                    android:paddingLeft="3dp"
+                    android:text="@string/sabun"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/view_num"
+                    android:layout_width="1dp"
+                    android:layout_height="14dp"
+                    android:layout_weight="0"
+                    android:background="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/value_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@android:color/transparent"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.userId}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_pass"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:background="@{selectIdx == 2 ? @drawable/value_frame_focus : @drawable/value_frame}"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_pass"
+                    android:layout_width="73dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="-6sp"
+                    android:paddingLeft="3dp"
+                    android:text="@string/password"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/view_pass"
+                    android:layout_width="1dp"
+                    android:layout_height="14dp"
+                    android:layout_weight="0"
+                    android:background="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/value_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLength="30"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.userPassword}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_birth"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:background="@{selectIdx == 3 ? @drawable/value_frame_focus : @drawable/value_frame}"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/title_birth"
+                    android:layout_width="73dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:lineSpacingExtra="-6sp"
+                    android:paddingLeft="3dp"
+                    android:text="@string/birth_date"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <View
+                    android:id="@+id/view_birth"
+                    android:layout_width="1dp"
+                    android:layout_height="14dp"
+                    android:layout_weight="0"
+                    android:background="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/value_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:backgroundTint="@android:color/transparent"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:text="@={viewModel.userBirth}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_cert"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0"
+                android:background="@drawable/loginbt_frame"
+                android:clickable="true"
+                android:gravity="center"
+                android:lineSpacingExtra="-6sp"
+                android:onClick="@{() -> viewModel.login()}"
+                android:paddingTop="0dp"
+                android:scaleType="fitCenter"
+                android:text="@string/login"
+                android:textAlignment="gravity"
+                android:textColor="@color/teal_blue"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

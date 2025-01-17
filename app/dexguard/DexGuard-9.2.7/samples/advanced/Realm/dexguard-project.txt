@@ -1,0 +1,21 @@
+# DexGuard's default settings are fine for this sample application.
+
+# Display some more statistics about the processed code.
+-verbose
+
+# Hide warnings related to optional okhttp library
+-dontnote okhttp3.**
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+# Hide warnings related to the jackson library
+-dontwarn com.fasterxml.jackson.**
+
+# Hide notes related to the realm library
+-dontnote io.realm.**
+
+-keep enum com.fasterxml.jackson.** { *; }
+
+-keepclassmembers class io.realm.examples.rxjava.retrofit.GitHubUser {
+   <fields>;
+}

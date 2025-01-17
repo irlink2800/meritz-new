@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DebugBlocker Sample</string>
+
+    <string name="env_check_2">Debugger blocked</string>
+</resources>

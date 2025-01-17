@@ -1,0 +1,36 @@
+# DexGuard's default settings are fine for this sample application.
+
+# We'll display some more statistics about the processed code.
+-verbose
+
+# You can try enabling or disabling these and re-building the sample:
+#-raspchecks emulator,apktamper,certificatetamper,filetamper,hook,root,debug,virtualenvironment
+
+# To start with, let's just enable emulator detection
+-raspchecks emulator
+
+# If the RASP detector is included in -raspcontinueon list then the optional callback will be executed and
+# then the app will continue to execute as normal. Otherwise, the sample will crash when detecting a
+# threat (after it has executed your optional callback). See the RASP manual page for more details.
+# By default, the following option is applied: don't crash by default for Hook, Root or VirtualEnvironment,
+# as on rare occasions these checks could result in false positives due to the diverse nature of the Android platform.
+#-raspcontinueon hook,root,virtualenvironment
+
+# Optional callback method.
+# Note that the method signature must match but the method name can be any name you choose.
+-raspcallback class com.example.HelloWorldActivity {
+    public static void myCallback(com.guardsquare.dexguard.rasp.callback.DetectionReport);
+}
+
+# If you need to adjust the target classes you can uncomment and change this filter.
+#-raspclassfilter class **
+
+# If you want to increase the amount of checks injected for a certain detector, for example increase Emulator checks:
+#-raspaggressiveness emulator high
+
+# If you don't specify any specific files, all files will be checked when enabling the File Tamper Detector.
+# If you want to check specific files when enabling file checking, you can specify them:
+#-raspfiletamperlist assets/file1.txt,assets/file2.txt
+
+# The build/outputs/<variant>/mapping/injectmapping.txt file will contain a mapping of which RASP 
+# checking code was injected into which method in your application.

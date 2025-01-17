@@ -1,0 +1,10 @@
+You can build either AdMob or Wallet with the following commands:
+
+    ./gradlew :AdMob:assembleRelease
+    ./gradlew :Wallet:assembleRelease
+
+The DexGuard protected applications will be located in:
+
+    AdMob/build/outputs/apk/release/AdMob-release-protected.apk
+    Wallet/build/outputs/apk/release/Wallet-release-protected.apk
+
