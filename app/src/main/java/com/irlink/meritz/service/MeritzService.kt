@@ -8,11 +8,13 @@ import com.irlink.meritz.R
 import com.irlink.meritz.manager.CallManager
 import com.irlink.meritz.manager.DeviceManager
 import com.irlink.meritz.observer.HeadSetPlugReceiver
+import com.irlink.meritz.observer.VolumeObserver
 import com.irlink.meritz.util.network.socket.subscribeSocket
 import com.irlink.meritz.ocx.OcxManager
 import com.irlink.meritz.ocx.ocxExecute
 import com.irlink.meritz.ui.screen.login.LoginActivity
 import com.irlink.meritz.util.LogUtil
+import com.irlink.meritz.util.base.livedata.EventObserver
 import com.irlink.meritz.util.extension.timer
 import com.irlink.meritz.util.notification.NotificationData
 import com.irlink.meritz.util.notification.NotificationGroups
@@ -79,6 +81,7 @@ class MeritzService : LifecycleService() {
     private val ocxManager: OcxManager by inject()
 
     private val headSetPlugReceiver: HeadSetPlugReceiver by inject()
+    private val volumeObserver: VolumeObserver by inject()
 
     private val notificationUtil: NotificationUtil by inject()
 
@@ -98,6 +101,7 @@ class MeritzService : LifecycleService() {
         showNotification()
 
         registerHeadSetReceiver()
+        registerVolumeObserver()
 
         initOcxManager()
 
@@ -145,12 +149,14 @@ class MeritzService : LifecycleService() {
                 LogUtil.d(TAG, "onStartCommand. Extra.STATE: Start")
                 isAutoRestart = true
             }
+
             State.STOP -> {
                 LogUtil.d(TAG, "onStartCommand. Extra.STATE: Stop")
                 isAutoRestart = false
                 stopService(Intent(applicationContext, MeritzService::class.java))
                 return START_NOT_STICKY
             }
+
             else -> LogUtil.d(TAG, "onStartCommand.")
         }
         return START_STICKY
@@ -165,7 +171,6 @@ class MeritzService : LifecycleService() {
         .observeOn(Schedulers.io())
         .onBackpressureBuffer()
         .subscribeSocket(ocxManager)
-        .let { Unit }
 
     /**
      * Ocx 매니저 초기화.
@@ -192,6 +197,16 @@ class MeritzService : LifecycleService() {
     }
 
     /**
+     * 볼륨 옵저버 등록.
+     */
+    private fun registerVolumeObserver() {
+        volumeObserver.onChangedVolume.observe(this, EventObserver {
+            ocxManager.onGetVolume(isMaxVolume = false)
+        })
+        volumeObserver.register()
+    }
+
+    /**
      * 서비스 종료.
      */
     override fun onDestroy() {
@@ -205,6 +220,7 @@ class MeritzService : LifecycleService() {
         stopForeground(true)
 
         unregisterHeadSetReceiver()
+        unregisterVolumeObserver()
 
         closeOcxSocket()
 
@@ -223,13 +239,19 @@ class MeritzService : LifecycleService() {
         .observeOn(AndroidSchedulers.mainThread())
         .onBackpressureBuffer()
         .ocxExecute()
-        .let { Unit }
 
     /**
      * 헤드셋 옵저버 해제.
      */
     private fun unregisterHeadSetReceiver() {
         headSetPlugReceiver.unregister(applicationContext)
+    }
+
+    /**
+     * 볼륨 옵저버 해제.
+     */
+    private fun unregisterVolumeObserver() {
+        volumeObserver.unregister()
     }
 
 //    /**

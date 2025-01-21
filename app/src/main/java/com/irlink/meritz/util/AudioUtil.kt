@@ -18,7 +18,11 @@ open class AudioUtil(
      */
     open var volume: Int
         set(value) {
-            audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL, value, AudioManager.FLAG_SHOW_UI)
+            audioManager.setStreamVolume(
+                AudioManager.STREAM_VOICE_CALL,
+                value,
+                AudioManager.FLAG_SHOW_UI
+            )
         }
         get() = audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL)
 
