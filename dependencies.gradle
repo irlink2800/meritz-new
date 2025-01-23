@@ -41,7 +41,7 @@ ext {
     fcmVersion = '21.0.0'
     analyticsVersion = '18.0.0'
     crashlyticsVersion = '17.3.0'
-    PerformanceMonitoringVersion = '19.0.10'
+    performanceMonitoringVersion = '19.0.10'
     storageVersion = '19.2.0'
     realTimeDatabaseVersion = '19.5.1'
 

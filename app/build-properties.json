@@ -1,0 +1,5 @@
+{
+  "cipher_algorithm": "AES",
+  "transformation": "AES/CBC/PKCS5Padding",
+  "cipher_key": "ODQ0ZDU0Mjg5ODE5ZThkYTI5NzIwNzA4MGZkNDBmMTc="
+}

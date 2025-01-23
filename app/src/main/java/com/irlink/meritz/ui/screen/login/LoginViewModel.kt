@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import com.irlink.meritz.BuildConfig
 import com.irlink.meritz.Constant
 import com.irlink.meritz.R
+import com.irlink.meritz.domain.firebase.UpdateFcmTokenUseCase
 import com.irlink.meritz.manager.DeviceManager
+import com.irlink.meritz.service.FcmService
 import com.irlink.meritz.ui.base.viewmodel.BaseViewModel
 import com.irlink.meritz.util.DeviceUtil
 import com.irlink.meritz.util.LogUtil
@@ -16,9 +18,10 @@ import com.irlink.meritz.util.extension.notify
 
 class LoginViewModel(
 
-    private val deviceUtil: DeviceUtil,
+    deviceUtil: DeviceUtil,
+    resourceProvider: ResourceProvider,
     private val deviceManager: DeviceManager,
-    private val resourceProvider: ResourceProvider
+    private val updateFcmTokenUseCase: UpdateFcmTokenUseCase
 
 ) : BaseViewModel() {
 
@@ -120,6 +123,7 @@ class LoginViewModel(
     fun login() {
         if (Constant.IS_TEST_MODE) {
             deviceManager.setTestMode()
+            updateFcmToken()
         } else {
             loginProcess()
         }
@@ -191,6 +195,21 @@ class LoginViewModel(
             LogUtil.exception(TAG, e)
         }
         deviceManager.setLogin(true)
+        updateFcmToken()
+    }
+
+    /**
+     * FCM 토큰 업데이트.
+     */
+    private fun updateFcmToken() = FcmService.getFcmToken { token ->
+        LogUtil.d(FcmService.TAG, "updateFcmToken: $token")
+
+        val request = UpdateFcmTokenUseCase.Request(
+            token = token ?: return@getFcmToken
+        )
+        updateFcmTokenUseCase.request(request) {
+            LogUtil.d(FcmService.TAG, "onNewToken: [${it.code}] ${it.message}")
+        }
     }
 
 }

@@ -33,7 +33,6 @@ abstract class RecordManager(
     protected val fileUtil: FileUtil,
     protected val formatUtil: FormatUtil,
     protected val deviceUtil: DeviceUtil,
-    protected val mediaRecordUtil: MediaRecordUtil,
     protected val directoryManager: DirectoryManager
 
 ) : IRecordingCallback, OnAutoPartialEndedListener {
@@ -261,51 +260,6 @@ abstract class RecordManager(
             IRRecorderv2.sendReceive(applicationContext, TelephonyManager.EXTRA_STATE_IDLE)
         }
         clearCallCurrentRecord()
-    }
-
-    /**
-     * 대면 녹취 시작.
-     */
-    open fun startFtfRecord(remoteNumber: String) {
-        if (isCallRecording.value == true) {
-            LogUtil.w(TAG, "is currently call recording.")
-            return
-        }
-        if (isFtfRecording.value == true) {
-            LogUtil.w(TAG, "is already ftf recording.")
-            return
-        }
-        val record = newRecord(
-            type = RecordType.FTF,
-            remoteNumber = remoteNumber
-        ).apply {
-            isStartedRecord = true
-            callConnectedDate = callDate
-            callConnectedTime = callStartTime
-        }
-        onRecordStart(record.initializeFileName, null)
-        mediaRecordUtil.startRecord(record.initializeFile)
-    }
-
-    /**
-     * 대면 녹취 종료.
-     */
-    open fun endFtfRecord() {
-        if (isFtfRecording.value == false) {
-            LogUtil.w(TAG, "is already stopped ftf recording.")
-            return
-        }
-        mediaRecordUtil.stopRecord()
-        currentFtfRecord?.let {
-            it.callEndDate = formatUtil.toDate(Date())
-            it.callEndTime = formatUtil.toTime(Date())
-            it.talkTime = formatUtil.toDurationSec(
-                fromTime = it.callStartTime,
-                toTime = it.callEndTime
-            )
-        }
-        onSaveFiles(currentFtfRecord?.initializeFileName)
-        clearFtfCurrentRecord()
     }
 
     /**

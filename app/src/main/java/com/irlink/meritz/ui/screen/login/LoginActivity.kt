@@ -9,12 +9,14 @@ import androidx.databinding.DataBindingUtil
 import com.irlink.meritz.App
 import com.irlink.meritz.R
 import com.irlink.meritz.databinding.ActivityLoginBinding
+import com.irlink.meritz.domain.firebase.UpdateFcmTokenUseCase
 import com.irlink.meritz.service.MeritzService
 import com.irlink.meritz.ui.base.activity.BaseActivity
 import com.irlink.meritz.ui.screen.main.MainActivity
 import com.irlink.meritz.util.PermissionUtil
 import com.irlink.meritz.util.base.livedata.EventObserver
 import org.koin.android.ext.android.inject
+import org.koin.experimental.property.inject
 import kotlin.math.ceil
 
 class LoginActivity : BaseActivity() {
@@ -31,6 +33,7 @@ class LoginActivity : BaseActivity() {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 }
+
                 false -> {
                     addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

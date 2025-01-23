@@ -33,6 +33,7 @@ object NetworkModule : KoinComponent {
         SERVER("SERVER", "https://mjtm.meritzfire.com/"),
         NODE("NODE", "https://mjtmcall.meritzfire.com:3000/"),
         REC("REC", "https://mjtmrec.meritzfire.com/"),
+        ETC("ETC", "http://etc/")
     }
 
     private const val TIME_OUT: Long = 1000 * 60
@@ -102,12 +103,18 @@ object NetworkModule : KoinComponent {
                 get()
             )
         }
+        single(named(Server.ETC.tag)) {
+            createRetrofit(
+                Server.ETC.url,
+                get(),
+                get()
+            )
+        }
     }
 
     @JvmStatic
-    private fun createOkHttp(cacheDir: File, interceptor: OkHttpInterceptor): OkHttpClient {
-        LogUtil.d(TAG, "createOkHttp.")
-        return OkHttpClient.Builder()
+    private fun createOkHttp(cacheDir: File, interceptor: OkHttpInterceptor): OkHttpClient =
+        OkHttpClient.Builder()
             .protocols(listOf(Protocol.HTTP_1_1))
             .hostnameVerifier(hostNameVerifier)
             .sslSocketFactory(sslSocketFactory, trustManager)
@@ -117,8 +124,6 @@ object NetworkModule : KoinComponent {
             .cache(Cache(cacheDir, CACHE_SIZE))
             .addInterceptor(interceptor)
             .build()
-    }
-
 
     @JvmStatic
     private fun createRetrofit(
@@ -132,4 +137,5 @@ object NetworkModule : KoinComponent {
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .client(okHttpClient)
         .build()
+
 }

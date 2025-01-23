@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.LifecycleService
 import com.irlink.meritz.R
+import com.irlink.meritz.domain.etc.GetGenerate204UseCase
 import com.irlink.meritz.manager.CallManager
 import com.irlink.meritz.manager.DeviceManager
+import com.irlink.meritz.manager.IrRecordManager
 import com.irlink.meritz.observer.HeadSetPlugReceiver
 import com.irlink.meritz.observer.VolumeObserver
 import com.irlink.meritz.util.network.socket.subscribeSocket
@@ -16,6 +18,7 @@ import com.irlink.meritz.ui.screen.login.LoginActivity
 import com.irlink.meritz.util.LogUtil
 import com.irlink.meritz.util.base.livedata.EventObserver
 import com.irlink.meritz.util.extension.timer
+import com.irlink.meritz.util.network.socket.SocketState
 import com.irlink.meritz.util.notification.NotificationData
 import com.irlink.meritz.util.notification.NotificationGroups
 import com.irlink.meritz.util.notification.NotificationUtil
@@ -78,12 +81,15 @@ class MeritzService : LifecycleService() {
     private val deviceManager: DeviceManager by inject()
     private val callManager: CallManager by inject()
 
+    private val irRecordManager: IrRecordManager by inject()
     private val ocxManager: OcxManager by inject()
 
     private val headSetPlugReceiver: HeadSetPlugReceiver by inject()
     private val volumeObserver: VolumeObserver by inject()
 
     private val notificationUtil: NotificationUtil by inject()
+
+    private val getGenerate204UseCase: GetGenerate204UseCase by inject()
 
     private val compositeDisposable: CompositeDisposable by lazy {
         CompositeDisposable()
@@ -104,6 +110,7 @@ class MeritzService : LifecycleService() {
         registerVolumeObserver()
 
         initOcxManager()
+        enableRecordManager()
 
         callManager.newCall()
     }
@@ -173,14 +180,27 @@ class MeritzService : LifecycleService() {
         .subscribeSocket(ocxManager)
 
     /**
+     * 레코드 매니저 활성화.
+     */
+    private fun enableRecordManager() {
+        irRecordManager.onRecordStart.observe(this, EventObserver {
+            if (irRecordManager.currentCallRecord?.isRecord == true) {
+                ocxManager.event.startRecord(irRecordManager.currentCallRecord).ocxExecute()
+            }
+        })
+        irRecordManager.enable()
+    }
+
+    /**
      * Ocx 매니저 초기화.
      */
     private fun initOcxManager() {
         ocxManager.socketState.observe(this) { socketState ->
             when (socketState) {
-//                SocketState.Closed -> getGenerate204UseCase.request(Unit) { response ->
-//                    LogUtil.d(TAG, "getGenerate204UseCase: $response")
-//                }
+                SocketState.Closed -> getGenerate204UseCase.request(Unit) { response ->
+                    LogUtil.d(TAG, "getGenerate204UseCase: $response")
+                }
+
                 else -> Unit
             }
         }
@@ -223,6 +243,7 @@ class MeritzService : LifecycleService() {
         unregisterVolumeObserver()
 
         closeOcxSocket()
+        disableRecordManager()
 
         compositeDisposable.clear()
 
@@ -241,6 +262,13 @@ class MeritzService : LifecycleService() {
         .ocxExecute()
 
     /**
+     * 레코드 매니저 비활성화.
+     */
+    private fun disableRecordManager() {
+        irRecordManager.disable()
+    }
+
+    /**
      * 헤드셋 옵저버 해제.
      */
     private fun unregisterHeadSetReceiver() {
@@ -254,20 +282,6 @@ class MeritzService : LifecycleService() {
         volumeObserver.unregister()
     }
 
-//    /**
-//     * FCM 토큰 업데이트.
-//     */
-//    private fun updateFcmToken() = FcmService.getFcmToken { token ->
-//        LogUtil.d(FcmService.TAG, "updateFcmToken: $token")
-//
-//        val request = UpdateFcmTokenUseCase.Request(
-//            token = token ?: return@getFcmToken
-//        )
-//        updateFcmTokenUseCase.request(request) {
-//            LogUtil.d(FcmService.TAG, "onNewToken: [${it.code}] ${it.message}")
-//        }
-//    }
-//
 //    /**
 //     * 디바이스 정보 로그.
 //     */
@@ -285,5 +299,5 @@ class MeritzService : LifecycleService() {
 //        )
 //    }.run {
 //        LogUtil.i(App.TAG, toString(4))
-//    }
+//
 }

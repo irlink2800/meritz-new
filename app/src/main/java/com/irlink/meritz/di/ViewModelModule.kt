@@ -19,6 +19,7 @@ object ViewModelModule {
             LoginViewModel(
                 get(),
                 get(),
+                get(),
                 get()
             )
         }

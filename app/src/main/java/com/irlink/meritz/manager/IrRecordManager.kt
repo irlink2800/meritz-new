@@ -31,7 +31,6 @@ class IrRecordManager(
     fileUtil: FileUtil,
     formatUtil: FormatUtil,
     deviceUtil: DeviceUtil,
-    mediaRecordUtil: MediaRecordUtil,
     directoryManager: DirectoryManager,
     private val audioFileUtil: AudioFileUtil,
     private val uploadManager: UploadManager
@@ -43,7 +42,6 @@ class IrRecordManager(
     fileUtil,
     formatUtil,
     deviceUtil,
-    mediaRecordUtil,
     directoryManager
 ) {
 
