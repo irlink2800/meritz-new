@@ -153,18 +153,22 @@ abstract class CallStateListener(
                     currentCallType = CallType.INBOUND
                     startCall(localPhoneNumber)
                 }
+
                 CallState.OFFHOOK -> if (prevCallState != CallState.CONNECTED) {
                     currentCallType = CallType.OUTBOUND
                     startCall(localPhoneNumber)
                 } else {
                     return@execute
                 }
+
                 CallState.CONNECTED -> {
                     connectCall(localPhoneNumber)
                 }
+
                 CallState.IDLE -> {
                     endCall(localPhoneNumber)
                 }
+
                 CallState.ERROR -> {
                     return@execute
                 }
@@ -221,9 +225,11 @@ abstract class CallStateListener(
                 CallType.INBOUND, CallType.INBOUND_SACALL -> {
                     prevCallState == CallState.RINGING
                 }
+
                 CallType.OUTBOUND, CallType.OUTBOUND_SACALL -> {
                     prevCallState == CallState.OFFHOOK
                 }
+
                 else -> true
             }
         )
@@ -287,5 +293,7 @@ abstract class CallStateListener(
         remoteNumbers.clear()
         compositeDisposable.clear()
     }
+
+    abstract fun notifyCallError()
 
 }

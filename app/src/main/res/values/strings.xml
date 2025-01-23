@@ -139,5 +139,6 @@
     <string name="inbound">수신</string>
     <string name="outbound">발신</string>
     <string name="recording_file_error_message">녹취 파일 생성 실패</string>
+    <string name="error_occurred_re_call_required">오류가 발생했습니다. 다시 전화를 걸어주세요.</string>
 
 </resources>

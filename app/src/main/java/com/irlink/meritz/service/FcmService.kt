@@ -62,6 +62,9 @@ class FcmService : FirebaseMessagingService() {
                 date = remoteMessage.data["date"]
             )
 
+            Type.SEND_RECORD_FILE -> onSendRecordFile()
+            Type.FORCE_SEND_RECORD_FILE -> onForceSendRecordFile()
+
             else -> Unit
         }
     } catch (e: Exception) {

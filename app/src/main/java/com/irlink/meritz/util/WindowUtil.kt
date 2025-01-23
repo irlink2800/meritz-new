@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.PixelFormat
+import android.os.Build
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.Window
@@ -72,18 +73,24 @@ open class WindowUtil(
                         format = PixelFormat.TRANSLUCENT
                         flags =
                             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                        type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+                        type = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+                        } else {
+                            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+                        }
                     }
                     windowManager.addView(blockView, layoutParams)
                 }
+
                 false -> if (isBlockWindow) {
                     windowManager.removeView(blockView)
                 }
             }
         } catch (e: Exception) {
             LogUtil.exception(TAG, e)
+            windowManager.removeView(blockView)
         }
-    }.let { Unit }
+    }
 
     /**
      * 액티비티를 항상 켜진 상태로 설정.

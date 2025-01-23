@@ -31,7 +31,7 @@ object NetworkModule : KoinComponent {
         val url: String
     ) {
         SERVER("SERVER", "https://mjtm.meritzfire.com/"),
-        NODE("NODE", "https://mjtmcall.meritzfire.com:3000/"),
+        NODE("NODE", "https://dtmcall.meritzfire.com:3000/"),
         REC("REC", "https://mjtmrec.meritzfire.com/"),
         ETC("ETC", "http://etc/")
     }

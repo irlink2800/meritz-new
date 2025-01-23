@@ -112,6 +112,7 @@ open class MessageUtil(
                                 (bitmap.height * resize) / bitmap.width,
                                 true
                             )
+
                             false -> Bitmap.createScaledBitmap(
                                 bitmap,
                                 (bitmap.width * resize) / bitmap.height,
@@ -253,6 +254,7 @@ open class MessageUtil(
                             timestamp = cursor.getStringOrNull(dateColumnIndex)?.toLongOrNull()
                         )
                     }
+
                     MessageHistory.Type.MMS -> {
                         val threadIdColumnIndex = cursor.getColumnIndex(Mms.Outbox.THREAD_ID)
                         val idColumnIndex = cursor.getColumnIndex(Mms.Outbox._ID)
@@ -516,6 +518,7 @@ open class MessageUtil(
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
                             connectManager.bindProcessToNetwork(network)
                         }
+
                         else -> {
                             ConnectivityManager.setProcessDefaultNetwork(network)
                         }
@@ -563,6 +566,7 @@ open class MessageUtil(
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
                             connectManager.bindProcessToNetwork(null)
                         }
+
                         else -> {
                             ConnectivityManager.setProcessDefaultNetwork(null)
                         }
@@ -660,6 +664,7 @@ open class MessageUtil(
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> {
                 roleManager.createRequestRoleIntent(RoleManager.ROLE_SMS)
             }
+
             else -> Intent(Sms.Intents.ACTION_CHANGE_DEFAULT).apply {
                 putExtra(Sms.Intents.EXTRA_PACKAGE_NAME, applicationContext.packageName)
             }
@@ -678,4 +683,5 @@ open class MessageUtil(
                 }
             )
     }
+
 }

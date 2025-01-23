@@ -2,6 +2,10 @@ package com.irlink.meritz.observer.call
 
 
 import android.content.Context
+import android.os.Build
+import android.widget.Toast
+import com.irlink.meritz.R
+import com.irlink.meritz.callstate.CallState
 import com.irlink.meritz.callstate.CallStateListener
 import com.irlink.meritz.manager.IrRecordManager
 import com.irlink.meritz.ocx.OcxPreference
@@ -20,6 +24,7 @@ import com.irlink.meritz.callstate.CallType
 import com.irlink.meritz.callstate.CallType.*
 import com.irlink.meritz.util.call.CallHistory
 import com.irlink.meritz.observer.call.consumer.CallStateConsumerImpl
+import com.irlink.meritz.util.extension.wait
 import java.util.*
 
 class IrCallStateListener(
@@ -54,6 +59,27 @@ class IrCallStateListener(
      */
     private val _onCallEnded: PublishSubject<CallHistory> = PublishSubject.create()
     val onCallEnded: Observable<CallHistory> = _onCallEnded
+
+    init {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            irRecordManager.onRecordStart.observeForever {
+                wait(2000) {
+                    remoteNumbers.entries.firstOrNull() != null
+                }
+                val phoneNumber = remoteNumbers.entries.firstOrNull()?.key
+
+                if (phoneNumber.isNullOrEmpty()) {
+                    if (ocxPref.keepSetDialStr.isNotEmpty()) {
+                        onCallStateChanged(CallState.CONNECTED.value, ocxPref.keepSetDialStr)
+                    } else {
+                        notifyCallError()
+                    }
+                } else {
+                    onCallStateChanged(CallState.CONNECTED.value, phoneNumber)
+                }
+            }
+        }
+    }
 
     override fun onCallStarted(remoteNumber: String, callType: CallType) {
         LogUtil.d(TAG, "\n\n")
@@ -151,6 +177,15 @@ class IrCallStateListener(
             LogUtil.d(TAG, "start keepSetDialStr: ${ocxPref.keepSetDialStr}")
             OuterActivities.intentCall(applicationContext, ocxPref.keepSetDialStr)
         }
+    }
+
+    override fun notifyCallError() {
+        LogUtil.d(TAG, "notifyCallError.")
+        Toast.makeText(
+            applicationContext,
+            R.string.error_occurred_re_call_required,
+            Toast.LENGTH_LONG
+        ).show()
     }
 
 }
