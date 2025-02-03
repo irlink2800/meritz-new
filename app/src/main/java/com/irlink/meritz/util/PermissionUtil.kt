@@ -13,8 +13,8 @@ import io.reactivex.rxjava3.disposables.Disposable
 class PermissionUtil(
 
     private val batteryUtil: BatteryUtil,
-    private val messageUtil: MessageUtil,
-    private val directoryManager: DirectoryManager
+    private val directoryManager: DirectoryManager,
+    private val messageUtil: MessageUtil
 
 ) {
 
@@ -83,7 +83,6 @@ class PermissionUtil(
                 false -> requestBatteryPermission(lifecycleOwner, onGranted)
             }
         }
-
 
     /**
      * 기본 문자 앱 설정.

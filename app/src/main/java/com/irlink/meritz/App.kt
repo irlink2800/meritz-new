@@ -5,12 +5,12 @@ import android.app.Application
 import android.content.Context
 import com.irlink.meritz.di.AppModule
 import com.irlink.meritz.util.notification.NotificationUtil
+import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
-import org.koin.core.inject
 
 class App : Application() {
 

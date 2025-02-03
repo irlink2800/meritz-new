@@ -27,11 +27,6 @@ class MainViewModel : BaseViewModel() {
      */
     val isNoData: MutableLiveData<Boolean> = MutableLiveData()
 
-
-    fun init() {
-        LogUtil.d(TAG, "init.")
-    }
-
     /**
      * 탭 아이디 선택.
      */

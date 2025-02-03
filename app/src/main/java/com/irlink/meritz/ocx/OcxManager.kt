@@ -8,10 +8,12 @@ import com.irlink.meritz.util.network.socket.SocketState
 import com.irlink.meritz.util.network.socket.subscribeSocket
 import com.irlink.meritz.ocx.wireless.IrWireless
 import com.irlink.meritz.ocx.wireless.WirelessPreference
+import com.irlink.meritz.record.RecordError
 import com.irlink.meritz.util.*
 import com.irlink.meritz.util.base.livedata.Event
 import com.irlink.meritz.util.call.CallUtil
 import com.irlink.meritz.util.extension.runOnMainThread
+import com.irlink.meritz.util.network.upload.UploadManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
@@ -235,6 +237,14 @@ class OcxManager(
     override fun onSetRecordFileName(recordFileName: String) {
     }
 
+    fun onUploaded(uploadTask: UploadManager.Task, result: String) {
+        compositeDisposable += event.sendUploadedResult(
+            result = result,
+            localFileName = uploadTask.localFileName,
+            remoteFileName = uploadTask.remoteFileName
+        ).ocxExecute()
+    }
+
     override fun onGetCallState() {
         compositeDisposable += event.sendCallState(ocxPref.isCallActive).ocxExecute()
     }
@@ -308,6 +318,7 @@ class OcxManager(
             CreateDeviceState.PAIRED -> {
 
             }
+
             CreateDeviceState.DUPLICATE_WEB_LOGIN -> {
                 compositeDisposable += close().ocxExecute()
             }

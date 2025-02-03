@@ -18,9 +18,9 @@ abstract class CallStateListener(
 
     protected val applicationContext: Context,
     protected val callUtil: CallUtil,
-    protected val formatUtil: FormatUtil,
+    protected val formatUtil: FormatUtil
 
-    ) : PhoneStateListener() {
+) : PhoneStateListener() {
 
     companion object {
         const val TAG: String = "CallStateListener"

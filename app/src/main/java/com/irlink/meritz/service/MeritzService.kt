@@ -4,6 +4,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.LifecycleService
+import com.irlink.meritz.App
+import com.irlink.meritz.BuildConfig
 import com.irlink.meritz.R
 import com.irlink.meritz.domain.etc.GetGenerate204UseCase
 import com.irlink.meritz.manager.CallManager
@@ -15,6 +17,7 @@ import com.irlink.meritz.util.network.socket.subscribeSocket
 import com.irlink.meritz.ocx.OcxManager
 import com.irlink.meritz.ocx.ocxExecute
 import com.irlink.meritz.ui.screen.login.LoginActivity
+import com.irlink.meritz.util.DeviceUtil
 import com.irlink.meritz.util.LogUtil
 import com.irlink.meritz.util.base.livedata.EventObserver
 import com.irlink.meritz.util.extension.timer
@@ -25,6 +28,7 @@ import com.irlink.meritz.util.notification.NotificationUtil
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import org.json.JSONObject
 import org.koin.android.ext.android.inject
 
 class MeritzService : LifecycleService() {
@@ -79,6 +83,7 @@ class MeritzService : LifecycleService() {
     private var isAutoRestart: Boolean = true
 
     private val deviceManager: DeviceManager by inject()
+    private val deviceUtil: DeviceUtil by inject()
     private val callManager: CallManager by inject()
 
     private val irRecordManager: IrRecordManager by inject()
@@ -112,6 +117,7 @@ class MeritzService : LifecycleService() {
         initOcxManager()
         enableRecordManager()
 
+        loggingDeviceInfo()
         callManager.newCall()
     }
 
@@ -187,6 +193,9 @@ class MeritzService : LifecycleService() {
             if (irRecordManager.currentCallRecord?.isRecord == true) {
                 ocxManager.event.startRecord(irRecordManager.currentCallRecord).ocxExecute()
             }
+        })
+        irRecordManager.onUploaded.observe(this, EventObserver { result ->
+            ocxManager.onUploaded(result.first, result.second)
         })
         irRecordManager.enable()
     }
@@ -282,22 +291,19 @@ class MeritzService : LifecycleService() {
         volumeObserver.unregister()
     }
 
-//    /**
-//     * 디바이스 정보 로그.
-//     */
-//    private fun loggingDeviceInfo() = JSONObject().apply {
-//        put("os", deviceUtil.os)
-//        put("brand", deviceUtil.brand)
-//        put("device_model", deviceUtil.model)
-//        put("phone_number", deviceUtil.phoneNumber)
-//        put("telecom", deviceUtil.telecom)
-//        put("deviceId", deviceUtil.deviceId)
-//        put("app_version", "${deviceUtil.versionName}(${BuildConfig.VERSION_CODE})")
-//        put(
-//            "build_type",
-//            "${appPref.appType}(${BuildConfig.BUILD_TYPE.toUpperCase(Locale.getDefault())})"
-//        )
-//    }.run {
-//        LogUtil.i(App.TAG, toString(4))
-//
+    /**
+     * 디바이스 정보 로그.
+     */
+    private fun loggingDeviceInfo() = JSONObject().apply {
+        put("os", deviceUtil.os)
+        put("brand", deviceUtil.brand)
+        put("device_model", deviceUtil.model)
+        put("phone_number", deviceUtil.phoneNumber)
+        put("telecom", deviceUtil.telecom)
+        put("deviceId", deviceUtil.deviceId)
+        put("app_version", "${BuildConfig.VERSION_NAME}(${BuildConfig.VERSION_CODE})")
+    }.run {
+        LogUtil.i(App.TAG, toString(4))
+    }
+
 }

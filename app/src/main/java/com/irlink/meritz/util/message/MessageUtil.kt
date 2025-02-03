@@ -42,9 +42,9 @@ import kotlin.concurrent.thread
 @SuppressLint("Recycle")
 open class MessageUtil(
 
-    private val applicationContext: Context,
+    private val applicationContext: Context
 
-    ) {
+) {
 
     companion object {
         const val TAG: String = "MessageUtil"

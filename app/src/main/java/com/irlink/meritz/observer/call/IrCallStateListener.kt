@@ -34,9 +34,9 @@ class IrCallStateListener(
     formatUtil: FormatUtil,
     private val ocxPref: OcxPreference,
     private val irRecordManager: IrRecordManager,
-    private val callStateConsumer: CallStateConsumerImpl,
+    private val callStateConsumer: CallStateConsumerImpl
 
-    ) : CallStateListener(applicationContext, callUtil, formatUtil) {
+) : CallStateListener(applicationContext, callUtil, formatUtil) {
 
     companion object {
         const val TAG: String = "IrCallStateListener"
